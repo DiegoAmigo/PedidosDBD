@@ -11,6 +11,6 @@ class categoriaTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory('App\Categoria', 30)->create();
     }
 }

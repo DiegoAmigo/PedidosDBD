@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class LocalTableSeeder extends Seeder
+class mesas_usuariosSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class LocalTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Local::class, 50)->create();
+        factory(App\Mesa_Usuario::class, 50)->create();
     }
 }

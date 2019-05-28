@@ -9,10 +9,10 @@ $factory->define(Local::class, function (Faker $faker) {
     return [
         'valor_entrega'=> $faker->numberBetween($min = 900, $max = 5000),
         'direccion_local'=> $faker->address,
-        'tiempo_despacho'=> $faker->numberBetween($min = 1, $max =1440),
-        'tiempo_retiro'=> $faker->numberBetween($min =1, $max=1440),
+        'tiempo_despacho'=> $faker->time($format = 'H:i', $max ='now'),
+        'tiempo_retiro'=> $faker->time($format = 'H:i', $max='now'),
         'aprobado'=> $faker->boolean($chanceOfGettingTrue = 50),
         'cadena'=> $faker->StreetName,
-        'nombre'=> $faker->firstNameMale,
+        'nombre_local'=> $faker->firstNameMale,
     ];
 });

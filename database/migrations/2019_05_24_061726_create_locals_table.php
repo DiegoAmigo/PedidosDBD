@@ -15,7 +15,7 @@ class CreateLocalsTable extends Migration
     {
         Schema::create('locals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_ubicacion');
+            //$table->integer('id_ubicacion');
             $table->double('valor_entrega', 9, 3);
             $table->string('direccion_local', 80);
             $table->time('tiempo_despacho');

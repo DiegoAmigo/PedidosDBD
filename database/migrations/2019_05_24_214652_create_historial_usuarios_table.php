@@ -15,7 +15,16 @@ class CreateHistorialUsuariosTable extends Migration
     {
         Schema::create('historial_usuarios', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('id_usuario');
+            $table->text('accion');
+            $table->date('fecha');
+            $table->time('hora');
             $table->timestamps();
+
+            $table->foreign('id_usuario')
+                    ->references('id')
+                    ->on('usuarios')
+                    ->onDelete('cascade');
         });
     }
 

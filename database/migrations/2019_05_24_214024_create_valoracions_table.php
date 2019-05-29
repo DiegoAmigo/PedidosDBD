@@ -15,7 +15,16 @@ class CreateValoracionsTable extends Migration
     {
         Schema::create('valoracions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('id_local');
+            $table->float('estrellas',5,2);
+            $table->text('comentario');
             $table->timestamps();
+
+            $table->foreign('id_local')
+                    ->references('id')
+                    ->on('locals')
+                    ->onDelete('cascade');
+
         });
     }
 

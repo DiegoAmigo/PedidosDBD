@@ -15,6 +15,10 @@ class CreateUbicacionsTable extends Migration
     {
         Schema::create('ubicacions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('pais', 50);
+            $table->integer('region');
+            $table->string('ciudad', 58);
+            $table->string('comuna', 21);
             $table->timestamps();
         });
     }

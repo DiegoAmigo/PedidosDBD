@@ -11,6 +11,6 @@ class horarioTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory('App\Horario', 30)->create();
     }
 }

@@ -12,5 +12,6 @@ class mesas_usuariosSeeder extends Seeder
     public function run()
     {
         factory(App\Mesa_Usuario::class, 50)->create();
+        
     }
 }

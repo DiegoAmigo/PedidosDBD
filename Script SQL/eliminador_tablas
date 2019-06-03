@@ -1,0 +1,7 @@
+drop table local cascade;
+drop table mesa cascade;
+drop table menu cascade;
+drop table producto cascade;
+drop table ubicacion cascade;
+drop table horario cascade;
+drop table categoria cascade;

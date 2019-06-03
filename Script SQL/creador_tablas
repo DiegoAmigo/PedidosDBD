@@ -1,0 +1,63 @@
+create table ubicacion (
+	id serial,
+	pais varchar(32),
+	region int,
+	ciudad varchar(58),
+	comuna varchar(21),
+	primary key(id),
+);
+
+create table local (
+	id serial,
+	id_ubicacion int,
+	valor_entrega money,
+	cantidad_puestos int,
+	numero_mesa int,
+	primary key(id),
+	foreign key (id_ubicacion)
+	references ubicacion(id)
+);
+
+create table mesa (
+	id serial,
+	id_local int,
+	cantidad_puestos int,
+	numero_mesa int,
+	primary key(id),
+	foreign key (id_local)
+	references local(id)
+);
+
+create table menu (
+	id serial,
+	nombre text,
+	precio money,
+	primary key(id),
+	
+);
+
+create table producto (
+	id serial,
+	nombre varchar(32),
+	cantidad int,
+	primary key(id),
+);
+
+
+
+create table horario (
+	id serial,
+	id_local
+	dia int,
+	apertura time,
+	cierre time,
+	primary key(id),
+	foreign key (id_local)
+	references local(id)
+);
+
+create table categoria (
+	id serial,
+	nombre varchar(32),
+	primary key(id),
+);

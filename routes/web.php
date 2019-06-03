@@ -11,6 +11,22 @@
 |
 */
 
+Route::resource('locales', 'LocalController');
+
+Route::get('mesasUsu/{id_usuario}', 'Mesas_UsuarioController@show');
+
+Route::post('mesasUsu', 'Mesas_UsuarioController@store');
+
+Route::get('pedidos', 'PedidoController@index');
+
+
+Route::resource('usuarios', 'UsuarioController');
+
+//por lo que lei tengo que implementarlo antes del resource de mesas
+Route::get('mesas/local/{local}', 'MesaController@mesaDeLocal');
+
+Route::resource('mesas', 'MesaController');
+
 Route::get('/', function () {
     return view('welcome');
 });

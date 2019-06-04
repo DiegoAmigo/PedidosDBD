@@ -5,3 +5,6 @@ drop table producto cascade;
 drop table ubicacion cascade;
 drop table horario cascade;
 drop table categoria cascade;
+drop table valoracion cascade;
+drop table metodo_pago cascade;
+drop table historial_usuario cascade;

@@ -61,3 +61,34 @@ create table categoria (
 	nombre varchar(32),
 	primary key(id),
 );
+
+create table valoracion (
+	id serial,
+	id_local
+	estrellas float,
+	comentario text,
+	primary key(id),
+	foreign key (id_local)
+	references local(id)
+);
+
+create table metodo_pago (
+	id serial,
+	pago_entrega bool,
+	pago_tarjeta bool,
+	numero_tarjeta varchar(17),
+	fecha_vencimiento date,
+	digitos_verificadores varchar(4),
+	primary key(id),
+);
+
+create table historial_usuario(
+	id serial,
+	id_usuario
+	accion text,
+	fecha date,
+	hora time,
+	primary key(id),
+	foreign key (id_usuario)
+	references usuario(id)
+);

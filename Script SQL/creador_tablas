@@ -10,12 +10,19 @@ create table ubicacions (
 create table locals (
 	id serial,
 	id_ubicacion int,
+	id_usuario int,
 	valor_entrega money,
-	cantidad_puestos int,
-	numero_mesa int,
+	direccion_local varchar(100),
+	tiempo_despacho time,
+	tiempo_retiro time,
+	aprobado bool,
+	cadena varchar(60),
+	nombre varchar(60),
 	primary key(id),
 	foreign key (id_ubicacion)
-	references ubicacions(id)
+	references ubicacions(id),
+	foreign key (id_usuario)
+	references usuarios(id)
 );
 
 create table mesas (
@@ -30,10 +37,14 @@ create table mesas (
 
 create table menus (
 	id serial,
+	id_local int,
 	nombre text,
 	precio money,
+	descuento float,
+	descripcion text,
 	primary key(id),
-
+	foreign key (id_local)
+	references locals(id)
 );
 
 create table productos (

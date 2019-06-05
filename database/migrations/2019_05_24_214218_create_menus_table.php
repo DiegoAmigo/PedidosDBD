@@ -15,11 +15,17 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('id_local');
             $table->text('nombre');
-            $table->float('precio', 8 , 3);
+            $table->money('precio');
             $table->float('descuento', 1 , 3);
             $table->text('descripcion');
             $table->timestamps();
+
+            $table->foreign('id_local')
+                    ->references('id')
+                    ->on('locals')
+                    ->onDelete('cascade');
         });
     }
 

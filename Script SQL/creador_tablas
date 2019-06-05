@@ -1,4 +1,4 @@
-create table ubicacion (
+create table ubicacions (
 	id serial,
 	pais varchar(32),
 	region int,
@@ -7,7 +7,7 @@ create table ubicacion (
 	primary key(id),
 );
 
-create table local (
+create table locals (
 	id serial,
 	id_ubicacion int,
 	valor_entrega money,
@@ -15,28 +15,28 @@ create table local (
 	numero_mesa int,
 	primary key(id),
 	foreign key (id_ubicacion)
-	references ubicacion(id)
+	references ubicacions(id)
 );
 
-create table mesa (
+create table mesas (
 	id serial,
 	id_local int,
 	cantidad_puestos int,
 	numero_mesa int,
 	primary key(id),
 	foreign key (id_local)
-	references local(id)
+	references locals(id)
 );
 
-create table menu (
+create table menus (
 	id serial,
 	nombre text,
 	precio money,
 	primary key(id),
-	
+
 );
 
-create table producto (
+create table productos (
 	id serial,
 	nombre varchar(32),
 	cantidad int,
@@ -45,7 +45,7 @@ create table producto (
 
 
 
-create table horario (
+create table horarios (
 	id serial,
 	id_local
 	dia int,
@@ -53,11 +53,37 @@ create table horario (
 	cierre time,
 	primary key(id),
 	foreign key (id_local)
-	references local(id)
+	references locals(id)
 );
 
-create table categoria (
+create table categorias (
 	id serial,
 	nombre varchar(32),
 	primary key(id),
 );
+
+
+create table usuarios(
+    id serial,
+    id_ubicacion int,
+    nombre varchar(60),
+    apellido varchar(60),
+    email varchar(30),
+    contrasena char(32),
+    calle varchar(80),
+    rol int,
+    primary key(id),
+    foreign key(id_ubicacion)
+    references ubicacions(id)
+);
+
+create table historial_usuarios(
+    id serial,
+    id_usuario int,
+    accion text,
+    fecha date,
+    hora time,
+    primary key(id),
+    foreign key(id_usuario)
+    references usuarios(id)
+)

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Menu;
 use App\Local;
+use App\Producto;
+use App\Menu_Producto;
 class MenuController extends Controller
 {
     /**
@@ -116,4 +118,19 @@ class MenuController extends Controller
             return "El menu con la id ingresada no existe en nuestro sistema";
         }
     }
+
+
+    public function productos($id)
+    {
+        $menu_productos = Menu_Producto::where('id_menu', $id)->get();
+        $productos = [];
+        foreach ($menu_productos as $producto) {
+            $producto_actual = Producto::where('id', $Producto->id_producto)->get();
+            array_push($productos, $producto_actual);
+
+        }
+        return $productos;
+    }
+
+
 }

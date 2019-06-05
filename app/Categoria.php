@@ -13,9 +13,9 @@ class Categoria extends Model
     protected $fillable=[
     	'nombre'
     ];
-    /*
-	public function local_categorias(){
-    	return $this->hasMany('App\Local_categoria');
+    public function locales(){
+
+        return $this->hasMany('App\Local_Categoria','id_categoria');
+
     }
-    */
 }

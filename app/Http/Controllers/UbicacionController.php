@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Ubicacion;
+use App\Usuario;
+use App\Local;
 class UbicacionController extends Controller
 {
     /**
@@ -107,4 +109,19 @@ class UbicacionController extends Controller
             return "La ubicacion con la id ingresada no existe en nuestro sistema";
         }
     }
+
+
+    public function usuarios_en_ubicacion($id)
+    {
+        $usuarios = Usuario::where('id_ubicacion', $id)->get();
+        return $usuarios;
+    }
+
+    public function locales_en_ubicacion($id)
+    {
+        $locales = Local::where('id_ubicacion', $id)->get();
+        return $locales;
+    }
+
+
 }

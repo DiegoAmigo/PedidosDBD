@@ -14,4 +14,12 @@ class Ubicacion extends Model
     	'pais', 'region', 'ciudad', 'comuna'
     ];
     
+
+    public function local(){
+        return $this->hasMany('App\Local');
+    }
+
+    public function usuario(){
+        return $this->hasMany('App\User');
+    }
 }

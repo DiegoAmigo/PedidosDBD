@@ -14,4 +14,7 @@ class Horario extends Model
     	'dia', 'apertura', 'cierre'
     ];
     
+    public function local(){
+        return $this->belongsTo('App\Local','id_local');
+    }
 }

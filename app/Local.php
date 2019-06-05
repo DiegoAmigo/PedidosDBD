@@ -15,4 +15,27 @@ class Local extends Model
         return $this->hasMany('App\Mesa');
 
     }
+
+    public function menu(){
+
+        return $this->hasMany('App\Menu');
+
+    }
+
+    public function categorias(){
+
+        return $this->hasMany('App\Local_Categoria');
+
+    }
+
+    public function horarios(){
+
+        return $this->hasMany('App\Horario');
+
+    }
+
+    public function ubicacion()
+    {
+        return $this->belongsTo('App\ubicacion','id_ubicacion');
+    }
 }

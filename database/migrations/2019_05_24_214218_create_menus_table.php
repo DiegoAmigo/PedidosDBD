@@ -17,7 +17,7 @@ class CreateMenusTable extends Migration
             $table->bigIncrements('id');
             $table->integer('id_local');
             $table->text('nombre');
-            $table->money('precio');
+            $table->float('precio',10,3);
             $table->float('descuento', 1 , 3);
             $table->text('descripcion');
             $table->timestamps();

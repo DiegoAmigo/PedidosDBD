@@ -14,4 +14,16 @@ class Producto extends Model
     	'nombre', 'cantidad'
     ];
     
+
+    public function ingredientes (){
+
+        return $this->hasMany('App\Producto_Ingrediente');
+
+    }
+
+    public function menu (){
+
+        return $this->hasMany('App\Menu_Producto');
+
+    }
 }

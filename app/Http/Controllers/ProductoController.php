@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Producto;
+use App\Producto_Ingrediente;
+use App\Ingrediente;
 class ProductoController extends Controller
 {
     /**
@@ -104,4 +106,19 @@ class ProductoController extends Controller
             return "El producto con la id ingresada no existe en nuestro sistema";
         }
     }
+
+
+    public function ingredientes($id)
+    {
+        $producto_ingredientes = Producto_Ingrediente::where('id_producto', $id)->get();
+        $ingredientes = [];
+        foreach ($producto_ingredientes as $ingrediente) {
+            $ingrediente_actual = Ingrediente::where('id', $ingrediente->id_ingrediente)->get();
+            array_push($ingredientes, $ingrediente_actual);
+
+        }
+        return $ingredientes;
+    }
+
+
 }

@@ -94,3 +94,44 @@ values (1,8,5);
 
 insert into usuarios (apellido, calle, contrasena, email, nombre)
 values ('Perez', 'Jose Manuel Infante 334', 'megustaLan4vid4d', 'perezoso@ucla.cl', 'Roberto' );
+
+
+
+
+
+insert into valoracions(id_local,estrellas,comentario)
+values (1,5,'Excelente servicio, lo recomiendo mucho');
+insert into valoracions(id_local,estrellas,comentario)
+values (1,3,'Buena comida, pero se demoro mucho en llegar');
+insert into valoracions(id_local,estrellas,comentario)
+values (1,5,'Rica comida y a tiempo');
+insert into valoracions(id_local,estrellas,comentario)
+values (1,1,'La comida nunca llego');
+insert into valoracions(id_local,estrellas,comentario)
+values (1,4,'Muy buen plato, aunque no tenia el ingrediente que solicite');
+insert into valoracions(id_local,estrellas,comentario)
+values (1,2,'Habia un bicho en la comida, no compren mas en este local');
+
+
+insert into historial_usuarios(id_usuario,accion,fecha,hora)
+values (1,'Compro hamburguesa pollo ,en el payaso feliz','2019-06-03', '20:49:42');
+insert into historial_usuarios(id_usuario,accion,fecha,hora)
+values (1,'Compro tree-cola,en el payaso feliz','2019-05-21', '17:46:35');
+insert into historial_usuarios(id_usuario,accion,fecha,hora)
+values (1,'Compro pizza napolitana,en el payaso feliz','2019-06-01', '12:26:52');
+insert into historial_usuarios(id_usuario,accion,fecha,hora)
+values (1,'Compro jugo manzana,en el payaso feliz','2019-04-30', '09:45:12');
+insert into historial_usuarios(id_usuario,accion,fecha,hora)
+values (1,'Compro helado piña,en el payaso feliz','2019-05-05', '22:16:46');
+
+
+insert into metodo_pagos(pago_entrega,pago_tarjeta,numero_tarjeta,fecha_vencimiento,digitos_verificadores)
+values (false,true,'4485480221084675',04/13,7351); 
+insert into metodo_pagos(pago_entrega,pago_tarjeta,numero_tarjeta,fecha_vencimiento,digitos_verificadores)
+values (false,true,'2444828671548005',02/24,5271); 
+insert into metodo_pagos(pago_entrega,pago_tarjeta,numero_tarjeta,fecha_vencimiento,digitos_verificadores)
+values (true,false,null,null,null); 
+insert into metodo_pagos(pago_entrega,pago_tarjeta,numero_tarjeta,fecha_vencimiento,digitos_verificadores)
+values (false,true,'8024108464854275',09/14,5329); 
+insert into metodo_pagos(pago_entrega,pago_tarjeta,numero_tarjeta,fecha_vencimiento,digitos_verificadores)
+values (true,false,null,null,null); 

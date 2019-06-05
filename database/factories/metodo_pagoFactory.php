@@ -19,7 +19,7 @@ $factory->define(Metodo_pago::class, function (Faker $faker) {
 		$pago_tarjeta = true;
 		$numero_tarjeta = $faker->creditCardNumber;
 		$fecha_vencimiento = $faker->creditCardExpirationDate;
-		$digitos_verificadores = $faker->creditCardExpirationDate;
+		$digitos_verificadores = $faker->ean4;
 	}
     return [
     	'pago_entrega'=> $faker->boolean($chanceOfGettingTrue = 50),

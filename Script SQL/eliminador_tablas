@@ -7,3 +7,5 @@ drop table horarios cascade;
 drop table categorias cascade;
 drop table usuarios cascade;
 drop table historial_usuarios cascade;
+drop table metodo_pagos cascade;
+drop table valoracions cascade;

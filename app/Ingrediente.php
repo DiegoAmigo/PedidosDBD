@@ -8,7 +8,7 @@ class Ingrediente extends Model
 {
     protected $table  = 'ingredientes';
 
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre_ingrediente'];
 
     public function productos (){
         

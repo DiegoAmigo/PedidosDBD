@@ -11,6 +11,6 @@ $factory->define(Menu_Pedido::class, function (Faker $faker) {
     return [
         'id_menu'=> $id_menu->random()->id,
         'id_pedido'=> $id_pedido->random()->id,
-        'aclaraciones' =$faker->text($maxNbChars= 200),  
+        'aclaraciones' =>$faker->text($maxNbChars= 200),  
     ];
 });

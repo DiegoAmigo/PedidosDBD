@@ -109,13 +109,3 @@ create table metodo_pago (
 	primary key(id),
 );
 
-create table historial_usuario(
-	id serial,
-	id_usuario
-	accion text,
-	fecha date,
-	hora time,
-	primary key(id),
-	foreign key (id_usuario)
-	references usuario(id)
-);

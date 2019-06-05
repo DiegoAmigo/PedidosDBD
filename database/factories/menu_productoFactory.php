@@ -11,6 +11,6 @@ $factory->define(Menu_Producto::class, function (Faker $faker) {
     return [
         'id_menu'=> $id_menu->random()->id,
         'id_producto'=> $id_producto->random()->id,
-        'seleccionable'=>faker->boolean(),
+        'seleccionable'=>$faker->boolean(),
     ];
 });

@@ -9,3 +9,6 @@ drop table usuarios cascade;
 drop table historial_usuarios cascade;
 drop table metodo_pagos cascade;
 drop table valoracions cascade;
+drop table permisos cascade;
+drop table rols  cascade;
+drop table ingredientes cascade;

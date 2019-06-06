@@ -58,7 +58,7 @@ create table productos (
 
 create table horarios (
 	id serial,
-	id_local
+	id_local int,
 	dia int,
 	apertura time,
 	cierre time,
@@ -100,9 +100,9 @@ create table historial_usuarios(
 )
 
 
-create table valoracion (
+create table valoracions (
 	id serial,
-	id_local
+	id_local int,
 	estrellas float,
 	comentario text,
 	primary key(id),
@@ -110,7 +110,7 @@ create table valoracion (
 	references local(id)
 );
 
-create table metodo_pago (
+create table metodo_pagos (
 	id serial,
 	pago_entrega bool,
 	pago_tarjeta bool,
@@ -119,4 +119,30 @@ create table metodo_pago (
 	digitos_verificadores varchar(4),
 	primary key(id),
 );
+
+create table permisos (
+	id serial,
+	id_rol
+	gestionar_local bool,
+	gestionar_locales bool,
+	gestionar_plataforma bool,
+	gestionar_plataforma bool,
+	primary key(id),
+	foreign key (id_rol)
+	references rol(id)
+);
+
+create table rols (
+	id serial,
+	tipo_rol varchar(40),
+	primary key(id),
+);
+
+
+create table ingredientes (
+	id serial,
+	nombre_ingrediente(32),
+	primary key(id),
+);
+
 

@@ -135,3 +135,42 @@ insert into metodo_pagos(pago_entrega,pago_tarjeta,numero_tarjeta,fecha_vencimie
 values (false,true,'8024108464854275',09/14,5329); 
 insert into metodo_pagos(pago_entrega,pago_tarjeta,numero_tarjeta,fecha_vencimiento,digitos_verificadores)
 values (true,false,null,null,null); 
+
+
+insert into permisos(id_rol,gestionar_local,gestionar_locales,gestionar_plataforma,gestionar_menus)
+values (1,true,false,false,true);
+insert into permisos(id_rol,gestionar_local,gestionar_locales,gestionar_plataforma,gestionar_menus)
+values (1,false,false,false,false);
+insert into permisos(id_rol,gestionar_local,gestionar_locales,gestionar_plataforma,gestionar_menus)
+values (1,false,true,true,false);
+
+
+insert into permisos(tipo_rol)
+values ('Gestor de local');
+insert into permisos(tipo_rol)
+values ('Usuario');
+insert into permisos(tipo_rol)
+values ('Administrador');
+
+
+insert into permisos(nombre_ingrediente)
+values ('Jamón');
+insert into permisos(nombre_ingrediente)
+values ('Choricillo');
+insert into permisos(nombre_ingrediente)
+values ('Aceitunas negras');
+insert into permisos(nombre_ingrediente)
+values ('Tocino');
+insert into permisos(nombre_ingrediente)
+values ('Choclo');
+
+
+
+
+
+
+
+
+
+
+

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Categoria;
+use App\Local_Categoria;
 class CategoriaController extends Controller
 {
     /**
@@ -103,5 +104,17 @@ class CategoriaController extends Controller
     }
 
 
-    
+    public function locales($id)
+    {
+        $local_categoria = Local_Categoria::where('id_categoria', $id)->get();
+        $locales = [];
+        foreach ($local_categoria as $local) {
+            $local_actual = Local::where('id', $local->id_local)->get();
+            array_push($locales, $local_actual);
+
+        }
+        return $locales;
+    }
+
+
 }

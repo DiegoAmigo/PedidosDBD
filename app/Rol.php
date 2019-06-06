@@ -15,4 +15,9 @@ class Rol extends Model
         return $this->hasMany('App\Permiso');
 
     }
+
+    public function usuarios (){
+        
+        return $this->hasMany('App\Usuario');
+    }
 }

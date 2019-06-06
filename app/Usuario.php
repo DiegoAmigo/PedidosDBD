@@ -18,4 +18,8 @@ class Usuario extends Model
     public function ubicacion(){
         return $this->belongsTo('App\Ubicacion', 'id_ubicacion');
     }
+
+    public function rols(){
+        return $this->belongsTo('App\Rol','id_rol');
+    }
 }

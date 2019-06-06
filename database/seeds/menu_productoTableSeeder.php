@@ -11,6 +11,6 @@ class menu_productoTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory('App\Menu_Producto', 20)->create();
     }
 }

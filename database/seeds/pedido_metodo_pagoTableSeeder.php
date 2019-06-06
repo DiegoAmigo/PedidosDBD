@@ -11,6 +11,6 @@ class pedido_metodo_pagoTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory('App\Pedido_Metodo_pago', 20)->create();
     }
 }

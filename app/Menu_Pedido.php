@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Menu_Pedido extends Model
 {
     
-    protected $table = 'menus_pedido';
+    protected $table = 'menus_pedidos';
     protected $fillable =[ 'id_pedido', 'id_menu','aclaraciones'];
 
     public function pedidos(){

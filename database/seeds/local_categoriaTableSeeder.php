@@ -11,6 +11,7 @@ class local_categoriaTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory('App\Local_Categoria', 20)->create();
+        
     }
 }

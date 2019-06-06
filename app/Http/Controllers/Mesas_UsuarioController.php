@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Mesa_UsuarioController;
 
-use App\Usuario;
-use App\Mesa;
 use App\Mesa_Usuario;
 
 class Mesas_UsuarioController extends Controller
@@ -37,41 +36,13 @@ class Mesas_UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $mesas = Mesa_usuario::all()->where('id_mesa', '=', $request->id_mesa);
-        $reservable= true;
-        if($mesas != null ){
-            foreach ($mesas as $mesa) {
-                if($mesa->dia == $request->dia){
-                    $horamas = strtotime("+1 hour", strtotime($mesa->hora));
-                    $horamenos = strtotime("-1 hour", strtotime($mesa->hora));
-                    if(strtotime($mesa->hora) == strtotime($request->hora)){
-                        $reservable = false;
-                        break;
-                    }
-                    elseif ((strtotime($request->hora) < $horamas) && (strtotime($request->hora) >= strtotime($mesa->hora))) {
-                        $reservable = false;
-                        break;
-                    }
-                    elseif((strtotime($request->hora) > $horamenos) && (strtotime($request->hora) <= strtotime($mesa->hora))){
-                        $reservable = false;
-                        break;
-                    }
-                }
-            }
-            if($reservable == true){
-                $mesaReser = new Mesa_Usuario;
-                $mesaReser->id_usuario = $request->id_usuario;
-                $mesaReser->id_mesa = $request->id_mesa;
-                $mesaReser->dia = $request->dia;
-                $mesaReser->hora = $request->hora;
-                $mesaReser->save();
-                return $mesaReser;
-            }
-            else{
-                return "no se puede reservar";
-            }
-        }
-
+        $mesa_usuario = new Mesa_Usuario;
+        $mesa_usuario->id_mesa = $request->id_mesa;
+        $mesa_usuario->id_usuario = $request->id_usuario;
+        $mesa_usuario->dia = $request->dia;
+        $mesa_usuario->hora = $request->hora;
+        $mesa_usuario->save();
+        return $mesa_usuario;
     }
 
     /**

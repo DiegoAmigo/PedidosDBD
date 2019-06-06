@@ -48,7 +48,7 @@ class ValoracionController extends Controller
         }
         else{
             //respuesta temporal
-            return "hola";
+            return "El local con el id ingresado no existe en nuestro sistema";
         }
        
     }
@@ -91,6 +91,12 @@ class ValoracionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $valoracion = Valoracion::find($id);
+        $valoracion->estrellas = $request->estrellas;
+        $valoracion->comentario = $request->comentario;
+        
+        $valoracion->save();
+        return $valoracion;
         //
     }
 
@@ -102,6 +108,15 @@ class ValoracionController extends Controller
      */
     public function destroy($id)
     {
+        $valoracion = Valoracion::find($id);
+        if($valoracion != NULL){
+            $valoracion->delete();
+            Valoracion::destroy($id);
+            return "valoracion eliminada del sistema";
+        }
+        else{
+            return "La valoracion con la id ingresada no existe en nuestro sistema";
+        }
         //
     }
 

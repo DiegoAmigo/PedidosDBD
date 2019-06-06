@@ -104,7 +104,7 @@ class HorarioController extends Controller
      */
     public function destroy($id)
     {
-        $horario = Menu::find($id);
+        $horario = Horario::find($id);
         if($horario != NULL){
             $horario->delete();
             Horario::destroy($id);

@@ -11,6 +11,6 @@ class rolsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Rol::class, 50)->create();
+        factory(App\Rol::class, 20)->create();
     }
 }

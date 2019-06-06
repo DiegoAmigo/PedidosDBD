@@ -11,6 +11,6 @@ class historial_usuarioTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory('App\Historial_usuario', 20)->create();
     }
 }

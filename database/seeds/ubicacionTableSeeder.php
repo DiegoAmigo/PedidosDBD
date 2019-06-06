@@ -11,6 +11,6 @@ class ubicacionTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Ubicacion', 30)->create();
+        factory('App\Ubicacion', 20)->create();
     }
 }

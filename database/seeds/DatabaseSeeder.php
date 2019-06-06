@@ -25,5 +25,15 @@ class DatabaseSeeder extends Seeder
         $this->call(ingredientesTableSeeder::class);
         $this->call(rolsTableSeeder::class);
         $this->call(valoracionTableSeeder::class);
+        $this->call(historial_usuarioTableSeeder::class);
+        $this->call(permisosTableSeeder::class);
+        $this->call(productoTableSeeder::class);
+        $this->call(rolsTableSeeder::class);
+        $this->call(metodo_pagoTableSeeder::class);
+        $this->call(pedido_metodo_pagoTableSeeder::class);
+        $this->call(producto_ingredienteTableSeeder::class);
+        $this->call(menu_productoTableSeeder::class);
+        
+
     }
 }

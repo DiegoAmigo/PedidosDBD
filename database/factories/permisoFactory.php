@@ -12,6 +12,7 @@ $factory->define(Permiso::class, function (Faker $faker) {
         'gestionar_locales'=>$faker->boolean($chanceOfGettingTrue = 30),
         'gestionar_plataforma'=>$faker->boolean($chanceOfGettingTrue = 10),
         'gestionar_menus'=>$faker->boolean($chanceOfGettingTrue = 30),
+        'id_rol'=>$id_rol->random()->id,
         
     ];
 });

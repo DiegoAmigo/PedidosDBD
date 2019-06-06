@@ -19,14 +19,14 @@ $factory->define(Metodo_pago::class, function (Faker $faker) {
 		$pago_tarjeta = true;
 		$numero_tarjeta = $faker->creditCardNumber;
 		$fecha_vencimiento = $faker->creditCardExpirationDate;
-		$digitos_verificadores = $faker->ean4;
+		$digitos_verificadores = $faker->numberBetween($min = 100 , $max = 999);
 	}
     return [
     	'pago_entrega'=> $faker->boolean($chanceOfGettingTrue = 50),
     	'pago_tarjeta'=> $pago_tarjeta,
     	'numero_tarjeta'=>$numero_tarjeta,
     	'fecha_vencimiento'=>$fecha_vencimiento,
-    	'digitos_verificadores' => $faker->numberBetween($min = 0, $max = 9999)
+    	'digitos_verificadores' => $digitos_verificadores,
 
         //
     ];

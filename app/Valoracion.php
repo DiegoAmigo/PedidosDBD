@@ -8,10 +8,10 @@ class Valoracion extends Model
 {
 	protected $table = 'valoracions';
 
-    protected $fillable = ['estrellas', 'comentario'];
+    protected $fillable = ['estrellas', 'comentario','id_local'];
     public function locals(){
         
-        return $this->belongsTo('App\Local');
+        return $this->belongsTo('App\Local','id_local');
 
     }
     

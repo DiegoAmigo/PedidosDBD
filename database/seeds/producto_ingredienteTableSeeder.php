@@ -11,6 +11,7 @@ class producto_ingredienteTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory('App\Producto_Ingrediente', 20)->create();
+        
     }
 }

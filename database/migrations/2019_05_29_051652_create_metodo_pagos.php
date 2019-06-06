@@ -17,9 +17,9 @@ class CreateMetodoPagos extends Migration
             $table->bigIncrements('id');
             $table->boolean('pago_entrega');
             $table->boolean('pago_tarjeta');
-            $table->string('numero_tarjeta',17);
-            $table->date('fecha_vencimiento');
-            $table->string('digitos_verificadores',4);
+            $table->string('numero_tarjeta',17)->nullable();
+            $table->date('fecha_vencimiento')->nullable();
+            $table->string('digitos_verificadores',4)->nullable();
             $table->timestamps();
         });
     }

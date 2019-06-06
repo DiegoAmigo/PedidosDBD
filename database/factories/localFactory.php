@@ -6,6 +6,7 @@ use App\Local;
 use Faker\Generator as Faker;
 
 $factory->define(Local::class, function (Faker $faker) {
+    $id_ubicacion = DB::table('ubicacions')->select('id')->get();
     return [
         'valor_entrega'=> $faker->numberBetween($min = 900, $max = 5000),
         'direccion_local'=> $faker->address,
@@ -14,5 +15,6 @@ $factory->define(Local::class, function (Faker $faker) {
         'aprobado'=> $faker->boolean($chanceOfGettingTrue = 50),
         'cadena'=> $faker->StreetName,
         'nombre_local'=> $faker->firstNameMale,
+        'id_ubicacion'=> $id_ubicacion->random()->id
     ];
 });

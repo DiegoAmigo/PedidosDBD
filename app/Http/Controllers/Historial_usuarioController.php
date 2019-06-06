@@ -17,7 +17,7 @@ class Historial_usuarioController extends Controller
      */
     public function index()
     {
-        
+        return Historial_usuario::all();
     }
 
     /**

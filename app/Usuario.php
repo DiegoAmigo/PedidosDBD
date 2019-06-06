@@ -14,4 +14,8 @@ class Usuario extends Model
     {
         return $this->hasMany('App\Pedido');
     }
+
+    public function ubicacion(){
+        return $this->belongsTo('App\Ubicacion', 'id_ubicacion');
+    }
 }

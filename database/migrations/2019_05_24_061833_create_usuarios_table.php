@@ -15,7 +15,7 @@ class CreateUsuariosTable extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            //$table->integer('id_ubicacion');
+            $table->integer('id_ubicacion');
             $table->string('nombre', 60);
             $table->string('apellido', 60);
             $table->string('email', 45);
@@ -23,11 +23,11 @@ class CreateUsuariosTable extends Migration
             $table->string('calle', 80);
             $table->timestamps();
 
-            /*$table->foreign('id_ubicacion')
+            $table->foreign('id_ubicacion')
                 ->references('id')
-                ->on('ubicacion')
+                ->on('ubicacions')
                 ->onDelete('cascade');
-            */
+
         });
     }
 

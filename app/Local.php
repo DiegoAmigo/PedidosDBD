@@ -36,6 +36,6 @@ class Local extends Model
 
     public function ubicacion()
     {
-        return $this->belongsTo('App\ubicacion','id_ubicacion');
+        return $this->belongsTo('App\Ubicacion','id_ubicacion');
     }
 }

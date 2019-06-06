@@ -35,9 +35,10 @@ class RolController extends Controller
     public function store(Request $request)
     {
         $rol = new Rol;
-        $rol->tipo_rol- = $request->tipo_rol;
+        $rol->tipo_rol = $request->tipo_rol;
         $rol->save();
-        return $rol;    }
+        return $rol;
+    }
 
     /**
      * Display the specified resource.

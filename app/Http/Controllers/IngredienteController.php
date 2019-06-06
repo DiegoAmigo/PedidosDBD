@@ -14,7 +14,7 @@ class IngredienteController extends Controller
     public function index()
     {
         return Ingrediente::all();
-        
+
     }
 
     /**
@@ -24,7 +24,7 @@ class IngredienteController extends Controller
      */
     public function create()
     {
-        //        
+        //
     }
 
     /**
@@ -55,7 +55,7 @@ class IngredienteController extends Controller
         else{
             return "El ingrediente con el id ingresado no existe en nuestro sistema";
         }
-        
+
     }
 
     /**
@@ -93,7 +93,7 @@ class IngredienteController extends Controller
     public function destroy($id)
     {
         $ingrediente = Ingrediente::find($id);
-        if($ingrediente !null){
+        if($ingrediente != null){
             $ingrediente->delete();
             Ingrediente::destroy($id);
             return "Ingrediente eliminado";
@@ -101,7 +101,7 @@ class IngredienteController extends Controller
         else{
             return "No existe el ingrediente, por lo que no puede ser eliminado";
         }
-        
+
         return $ingrediente;
     }
 }

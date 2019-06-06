@@ -17,7 +17,7 @@ class ValoracionController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -50,7 +50,7 @@ class ValoracionController extends Controller
             //respuesta temporal
             return "El local con el id ingresado no existe en nuestro sistema";
         }
-       
+
     }
     /**
      * Display the specified resource.
@@ -68,7 +68,7 @@ class ValoracionController extends Controller
         else{
             return "Valoracion no encontrada";
         }
-        
+
     }
 
     /**
@@ -94,7 +94,7 @@ class ValoracionController extends Controller
         $valoracion = Valoracion::find($id);
         $valoracion->estrellas = $request->estrellas;
         $valoracion->comentario = $request->comentario;
-        
+
         $valoracion->save();
         return $valoracion;
         //
@@ -128,11 +128,7 @@ class ValoracionController extends Controller
         }
         else{
             return "local no existente";
-
+        }
 
     }
-
-
-
-    
 }

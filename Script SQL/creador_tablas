@@ -122,13 +122,13 @@ create table metodo_pagos (
 
 create table permisos (
 	id serial,
-	id_rol
+	id_rol int,
 	gestionar_local bool,
 	gestionar_locales bool,
 	gestionar_plataforma bool,
 	gestionar_plataforma bool,
 	primary key(id),
-	foreign key (id_rol)
+	foreign key (id_rol),
 	references rol(id)
 );
 
@@ -147,8 +147,8 @@ create table ingredientes (
 
 create table mesas_usuarios (
     id serial,
-	id_mesa,
-	id_usuario,
+	id_mesa int,
+	id_usuario int,
 	dia date,
 	hora time,
 	foreign key (id_mesa)
@@ -161,8 +161,8 @@ create table mesas_usuarios (
 
 create table locals_categorias (
     id serial,
-	id_local,
-	id_categoria,
+	id_local int,
+	id_categoria int,
 	foreign key (id_local)
 	references local(id),
 	foreign key (id_categoria)
@@ -171,11 +171,23 @@ create table locals_categorias (
 );
 
 
+create table menus_productos (
+    id serial,
+	id_menu int,
+	id_producto int,
+	seleccionable bool,
+	foreign key (id_menu)
+	references menu(id),
+	foreign key (id_productos)
+	references productos(id),
+	primary key(id),
+);
+
 create table menus_pedidos (
     id serial,
-	id_menu,
-	id_pedido,
-	seleccionable bool,
+	id_menu int,
+	id_pedido int,
+	aclaraciones text,
 	foreign key (id_menu)
 	references menu(id),
 	foreign key (id_pedido)
@@ -185,8 +197,8 @@ create table menus_pedidos (
 
 create table productos_ingredientes (
     id serial,
-	id_producto,
-	id_ingrediente;
+	id_producto int,
+	id_ingrediente int,
 	foreign key (id_producto)
 	references producto(id),
 	foreign key (id_ingrediente)
@@ -197,8 +209,8 @@ create table productos_ingredientes (
 
 create table pedidos_metodo_pagos (
     id serial,
-	id_pedido,
-	id_metodo_pagos;
+	id_pedido int,
+	id_metodo_pagos int,
 	foreign key (id_pedido)
 	references pedido(id),
 	foreign key (id_metodo_pagos)

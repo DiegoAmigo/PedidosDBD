@@ -12,3 +12,8 @@ drop table valoracions cascade;
 drop table permisos cascade;
 drop table rols  cascade;
 drop table ingredientes cascade;
+drop table mesas_usuarios cascade;
+drop table locals_categorias cascade;
+drop table menus_pedidos cascade;
+drop table productos_ingredientes cascade;
+drop table pedidos_metodo_pagos cascade;

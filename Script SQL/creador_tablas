@@ -145,4 +145,63 @@ create table ingredientes (
 	primary key(id),
 );
 
+create table mesas_usuarios (
+    id serial,
+	id_mesa,
+	id_usuario,
+	dia date,
+	hora time,
+	foreign key (id_mesa)
+	references mesa(id),
+	foreign key (id_usuario)
+	references usuario(id),
+	primary key(id),
+);
 
+
+create table locals_categorias (
+    id serial,
+	id_local,
+	id_categoria,
+	foreign key (id_local)
+	references local(id),
+	foreign key (id_categoria)
+	references categoria(id),
+	primary key(id),
+);
+
+
+create table menus_pedidos (
+    id serial,
+	id_menu,
+	id_pedido,
+	seleccionable bool,
+	foreign key (id_menu)
+	references menu(id),
+	foreign key (id_pedido)
+	references pedido(id),
+	primary key(id),
+);
+
+create table productos_ingredientes (
+    id serial,
+	id_producto,
+	id_ingrediente;
+	foreign key (id_producto)
+	references producto(id),
+	foreign key (id_ingrediente)
+	references ingrediente(id),
+	primary key(id),
+);
+
+
+create table pedidos_metodo_pagos (
+    id serial,
+	id_pedido,
+	id_metodo_pagos;
+	foreign key (id_pedido)
+	references pedido(id),
+	foreign key (id_metodo_pagos)
+	references metodo_pagos(id),
+	primary key(id),
+);

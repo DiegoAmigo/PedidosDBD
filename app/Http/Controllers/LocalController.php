@@ -37,6 +37,7 @@ class LocalController extends Controller
     public function store(Request $request)
     {
         $local = new Local;
+        $local->id_ubicacion = $request->id_ubicacion;
         $local->valor_entrega = $request->valor_entrega;
         $local->direccion_local = $request->direccion_local;
         $local->tiempo_despacho = $request->tiempo_despacho;

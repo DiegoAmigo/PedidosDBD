@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Usuario;
+use App\Mesa_Usuario;
+
+use App\Http\Controllers\Mesas_UsuarioController;
 
 class UsuarioController extends Controller
 {
@@ -108,8 +111,36 @@ class UsuarioController extends Controller
     }
 
 
-    /*
-    public function pedido(){
 
-    }*/
+    public function reservaMesa(Request $request){
+        $mesas = Mesa_usuario::all()->where('id_mesa', '=', $request->id_mesa);
+        $reservable= true;
+        if($mesas != null ){
+            foreach ($mesas as $mesa) {
+                if($mesa->dia == $request->dia){
+                    $horamas = strtotime("+1 hour", strtotime($mesa->hora));
+                    $horamenos = strtotime("-1 hour", strtotime($mesa->hora));
+                    if(strtotime($mesa->hora) == strtotime($request->hora)){
+                        $reservable = false;
+                        break;
+                    }
+                    elseif ((strtotime($request->hora) < $horamas) && (strtotime($request->hora) >= strtotime($mesa->hora))) {
+                        $reservable = false;
+                        break;
+                    }
+                    elseif((strtotime($request->hora) > $horamenos) && (strtotime($request->hora) <= strtotime($mesa->hora))){
+                        $reservable = false;
+                        break;
+                    }
+                }
+            }
+            if($reservable == true){
+                $controlador = new Mesas_UsuarioController;
+                return $controlador->store($request);
+            }
+            else{
+                return "no se puede reservar";
+            }
+        }
+    }
 }

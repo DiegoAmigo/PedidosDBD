@@ -4,7 +4,7 @@ create table ubicacions (
 	region int,
 	ciudad varchar(58),
 	comuna varchar(21),
-	primary key(id),
+	primary key(id)
 );
 
 create table locals (
@@ -51,7 +51,7 @@ create table productos (
 	id serial,
 	nombre varchar(32),
 	cantidad int,
-	primary key(id),
+	primary key(id)
 );
 
 
@@ -70,7 +70,7 @@ create table horarios (
 create table categorias (
 	id serial,
 	nombre varchar(32),
-	primary key(id),
+	primary key(id)
 );
 
 
@@ -97,7 +97,7 @@ create table historial_usuarios(
     primary key(id),
     foreign key(id_usuario)
     references usuarios(id)
-)
+);
 
 
 create table valoracions (
@@ -120,24 +120,23 @@ create table metodo_pagos (
 	primary key(id),
 );
 
-create table permisos (
-	id serial,
-	id_rol
-	gestionar_local bool,
-	gestionar_locales bool,
-	gestionar_plataforma bool,
-	gestionar_plataforma bool,
-	primary key(id),
-	foreign key (id_rol)
-	references rol(id)
-);
-
 create table rols (
 	id serial,
 	tipo_rol varchar(40),
 	primary key(id),
 );
 
+create table permisos (
+	id serial,
+	id_rol int,
+	gestionar_local bool,
+	gestionar_locales bool,
+	gestionar_plataforma bool,
+	gestionar_menus bool,
+	primary key(id),
+	foreign key (id_rol)	
+	references rols(id),
+);
 
 create table ingredientes (
 	id serial,
@@ -145,4 +144,75 @@ create table ingredientes (
 	primary key(id),
 );
 
+create table mesas_usuarios (
+    id serial,
+	id_mesa int,
+	id_usuario int,
+	dia date,
+	hora time,
+	foreign key (id_mesa)
+	references mesa(id),
+	foreign key (id_usuario)
+	references usuario(id),
+	primary key(id),
+);
 
+
+create table locals_categorias (
+    id serial,
+	id_local int,
+	id_categoria int,
+	foreign key (id_local)
+	references local(id),
+	foreign key (id_categoria)
+	references categoria(id),
+	primary key(id),
+);
+
+
+create table menus_productos (
+    id serial,
+	id_menu int,
+	id_producto int,
+	seleccionable bool,
+	foreign key (id_menu)
+	references menu(id),
+	foreign key (id_productos)
+	references productos(id),
+	primary key(id),
+);
+
+create table menus_pedidos (
+    id serial,
+	id_menu int,
+	id_pedido int,
+	aclaraciones text,
+	foreign key (id_menu)
+	references menu(id),
+	foreign key (id_pedido)
+	references pedido(id),
+	primary key(id),
+);
+
+create table productos_ingredientes (
+    id serial,
+	id_producto int,
+	id_ingrediente int,
+	foreign key (id_producto)
+	references producto(id),
+	foreign key (id_ingrediente)
+	references ingrediente(id),
+	primary key(id),
+);
+
+
+create table pedidos_metodo_pagos (
+    id serial,
+	id_pedido int,
+	id_metodo_pagos int,
+	foreign key (id_pedido)
+	references pedido(id),
+	foreign key (id_metodo_pagos)
+	references metodo_pagos(id),
+	primary key(id),
+);

@@ -71,7 +71,7 @@ insert into menus (id_local,nombre,precio,descuento,descripcion)
 values (1,'refrescante',3000,0,'especial para dias con temperaturas altas');
 insert into menus (id_local,nombre,precio,descuento,descripcion)
 values (1,'promo copa',5000,0,'promocion para celebrar la copa america');
-insert into menus (id_local,nombre,precio,descuento,descripcion)
+insert into menus (id_local,nombre,precio,descuento,descripcion);
 values (1,'jugoso',5000,0,'jugos naturales');
 
 insert into locals (id_ubicacion,id_usuario,valor_entrega,direccion_local,tiempo_despacho,tiempo_retiro,aprobado,cadena,nombre)

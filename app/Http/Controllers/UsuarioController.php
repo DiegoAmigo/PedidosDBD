@@ -154,4 +154,22 @@ class UsuarioController extends Controller
             }
         }
     }
+
+
+
+    public function realizarPedido(Request $request){
+
+        $controladorPedido = new PedidoController;
+        $pedido = $controladorPedido->store($request);
+        foreach ($request->menus as $menu) {
+            $controladorMenuPedido = new Menu_PedidoController;
+            $requestPedido = new Request(array('id_pedido' =>$pedido->id,'id_menu' =>$id_menu->id,'aclaraciones' =>$id_menu->aclaraciones));
+            $controladorMenuPedido->store($requestPedido);
+        }
+
+        return "pedido realizado";
+
+
+    }
+
 }

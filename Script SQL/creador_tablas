@@ -4,7 +4,7 @@ create table ubicacions (
 	region int,
 	ciudad varchar(58),
 	comuna varchar(21),
-	primary key(id),
+	primary key(id)
 );
 
 create table locals (
@@ -51,7 +51,7 @@ create table productos (
 	id serial,
 	nombre varchar(32),
 	cantidad int,
-	primary key(id),
+	primary key(id)
 );
 
 
@@ -70,7 +70,7 @@ create table horarios (
 create table categorias (
 	id serial,
 	nombre varchar(32),
-	primary key(id),
+	primary key(id)
 );
 
 
@@ -97,7 +97,7 @@ create table historial_usuarios(
     primary key(id),
     foreign key(id_usuario)
     references usuarios(id)
-)
+);
 
 
 create table valoracions (
@@ -120,24 +120,23 @@ create table metodo_pagos (
 	primary key(id),
 );
 
-create table permisos (
-	id serial,
-	id_rol int,
-	gestionar_local bool,
-	gestionar_locales bool,
-	gestionar_plataforma bool,
-	gestionar_plataforma bool,
-	primary key(id),
-	foreign key (id_rol),
-	references rol(id)
-);
-
 create table rols (
 	id serial,
 	tipo_rol varchar(40),
 	primary key(id),
 );
 
+create table permisos (
+	id serial,
+	id_rol int,
+	gestionar_local bool,
+	gestionar_locales bool,
+	gestionar_plataforma bool,
+	gestionar_menus bool,
+	primary key(id),
+	foreign key (id_rol)	
+	references rols(id),
+);
 
 create table ingredientes (
 	id serial,

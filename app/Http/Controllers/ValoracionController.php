@@ -17,7 +17,7 @@ class ValoracionController extends Controller
      */
     public function index()
     {
-
+        return Valoracion::all();
     }
 
     /**
@@ -131,4 +131,5 @@ class ValoracionController extends Controller
         }
 
     }
+
 }

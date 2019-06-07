@@ -29,6 +29,11 @@ class CreateUsuariosTable extends Migration
                 ->on('ubicacions')
                 ->onDelete('cascade');
 
+            $table->foreign('id_rol')
+                ->references('id')
+                ->on('rols')
+                ->onDelete('cascade');
+
         });
     }
 

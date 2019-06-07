@@ -18,6 +18,8 @@ Route::post('/mesasUsu', 'Mesas_UsuarioController@store');
 
 //Route::get('pedidos', 'PedidoController@index');
 
+Route::post('/usuarios/comentar/{id_usuario}', 'UsuarioController@comentarLocal');
+
 Route::get('/pedidos/{id_usuario}', 'PedidoController@pedidosUsuario');
 
 Route::post('/usuarios/reservarMesa', 'UsuarioController@reservaMesa');
@@ -45,7 +47,7 @@ Route::resource('/usuarios', 'UsuarioController');
 //por lo que lei tengo que implementarlo antes del resource de mesas
 Route::get('/mesas/local/{local}', 'MesaController@mesaDeLocal');
 
-
+Route::get('/menus/pedidos', 'PedidoController@pedidosMenu');
 
 Route::resource('/categorias', 'CategoriaController');
 Route::resource('/historial_usuarios', 'Historial_usuarioController');

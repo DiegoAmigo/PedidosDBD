@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 use App\Usuario;
 use App\Mesa_Usuario;
 use App\Historial_usuario;
-
+use App\Pedido;
+use App\Menu_Pedido;
 use App\Http\Controllers\Mesas_UsuarioController;
+use App\Local;
+use App\Valoracion;
 
 class UsuarioController extends Controller
 {
@@ -122,7 +125,6 @@ class UsuarioController extends Controller
     }
 
 
-
     public function reservaMesa(Request $request){
         $mesas = Mesa_usuario::all()->where('id_mesa', '=', $request->id_mesa);
         $reservable= true;
@@ -152,6 +154,41 @@ class UsuarioController extends Controller
             else{
                 return "no se puede reservar";
             }
+        }
+    }
+
+    public function comentarLocal(Request $request, $id_usuario){
+        $usuario = Usuario::find($id_usuario);
+        $local = Local::find($request->id_local);
+        $comentar = false;
+        if($usuario!=null){
+            $pedidos = Pedido::all()->where('id_usuario', '=', $id_usuario);
+            foreach($pedidos as $pedido){
+                    $menus = Menu_Pedido::all()->where('id_pedido', '=', $pedido->id);
+                    if($menus !=null){
+                        foreach($menus as $menu){
+                            if ($menu->id_local == $local->id_local){
+                                $comentar = true;
+                                break;
+                            }
+                        }
+                    }
+
+                if($comentar == true){
+                    break;
+                }
+            }
+        }
+        if($comentar == true){
+            $valoracion = New Valoracion;
+            $valoracion->comentario = $request->comentario;
+            $valoracion->estrellas = $request->estrellas;
+            $valoracion->id_local = $request->id_local;
+            $valoracion->save();
+            return $valoracion;
+        }
+        else{
+            return "no puede comentar debido a que no ha hecho ningún pedido";
         }
     }
 }

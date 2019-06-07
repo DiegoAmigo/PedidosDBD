@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Pedido;
+use App\Menu_Pedido;
 
 class PedidoController extends Controller
 {
@@ -92,6 +93,11 @@ class PedidoController extends Controller
 
     public function pedidosUsuario($id_usuario){
         $pedidos = Pedido::all()->where('id_usuario', '=', $id_usuario);
+        return $pedidos;
+    }
+
+    public function pedidosMenu(){
+        $pedidos = Menu_Pedido::all();
         return $pedidos;
     }
 }

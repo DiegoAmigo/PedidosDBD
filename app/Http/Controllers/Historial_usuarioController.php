@@ -38,7 +38,7 @@ class Historial_usuarioController extends Controller
     //
       public function store(Request $request)
     {
-    	 $historial_usuario = new Historial_usuario;
+    	$historial_usuario = new Historial_usuario;
         $historial_usuario->accion = $request->accion;
         $historial_usuario->fecha = $request->fecha;
         $historial_usuario->hora = $request->hora;

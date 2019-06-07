@@ -50,7 +50,7 @@ class MesaController extends Controller
         }
         else{
             //respuesta temporal
-            return "hola";
+            return "No se ha podido crear una mesa para el local";
         }
     }
 
@@ -105,9 +105,9 @@ class MesaController extends Controller
         //
     }
 
-    public function mesaDeLocal($id){
+    public function mesaDeLocal($id_local){
 
-        $local = Local::find($id);
+        $local = Local::find($id_local);
         if($local!= null){
             $mesa = Mesa::all()->where('id_local', '=', $local->id);
             return $mesa;

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Local;
-
+use App\Historial_usuario;
 
 class LocalController extends Controller
 {
@@ -91,7 +91,9 @@ class LocalController extends Controller
         $local->direccion_local = $request->direccion_local;
         $local->tiempo_despacho = $request->tiempo_despacho;
         $local->tiempo_retiro = $request->tiempo_retiro;
-        $local->aprobado = $request->aprobado;
+        if($local->aprobado == false){
+            $local->aprobado = false;
+        }
         $local->nombre_local = $request->nombre_local;
         $local->save();
         return $local;
@@ -107,6 +109,11 @@ class LocalController extends Controller
     {
         $local = Local::find($id);
         if($local != NULL){
+            $historial = New Historial_usuario;
+            $historial->accion = "Se ha eliminado el local con id".$local->id;
+            $historial->fecha = date('Y-m-d');
+            $historial->hora = date('H:m:s');
+            $historial->save();
             $local->delete();
             Local::destroy($id);
             return "Local eliminado del sistema";
@@ -121,6 +128,11 @@ class LocalController extends Controller
         $local = Local::find($id_Local);
         $local->aprobado = true;
         $local->save();
+        $historial = New Historial_usuario;
+        $historial->accion = "Se ha aprobado el local con id".$local->id;
+        $historial->fecha = date('Y-m-d');
+        $historial->hora = date('H:m:s');
+        $historial->save();
         return "local aprobado";
     }
 }

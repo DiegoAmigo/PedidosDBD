@@ -89,4 +89,9 @@ class PedidoController extends Controller
     {
         //
     }
+
+    public function pedidosUsuario($id_usuario){
+        $pedidos = Pedido::all()->where('id_usuario', '=', $id_usuario);
+        return $pedidos;
+    }
 }

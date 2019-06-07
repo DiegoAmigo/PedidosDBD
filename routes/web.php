@@ -18,7 +18,11 @@ Route::post('/mesasUsu', 'Mesas_UsuarioController@store');
 
 //Route::get('pedidos', 'PedidoController@index');
 
+Route::get('/pedidos/{id_usuario}', 'PedidoController@pedidosUsuario');
+
 Route::post('/usuarios/reservarMesa', 'UsuarioController@reservaMesa');
+Route::get('/mesasUsu/disponibles/{id_local}', 'Mesas_UsuarioController@mostrarMesasDisponibles');
+
 Route::get('/categorias/locales/{id}', 'CategoriaController@locales');
 
 Route::get('/historial_usuarios/usuario/{id}', 'Historial_usuarioController@historial_usuarioDeUsuario');

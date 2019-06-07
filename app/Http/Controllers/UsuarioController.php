@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Usuario;
 use App\Mesa_Usuario;
+use App\Historial_usuario;
 
 use App\Http\Controllers\Mesas_UsuarioController;
 
@@ -88,6 +89,11 @@ class UsuarioController extends Controller
         $usuario->contrasena = $request->contrasena;
         $usuario->calle = $request->calle;
         $usuario->save();
+        $historial = New Historial_usuario;
+        $historial->accion = "Ha actualizado datos del usuario con id".$usuario->id;
+        $historial->fecha = date('Y-m-d');
+        $historial->hora = date('H:m:s');
+        $historial->save();
         return $usuario;
     }
 
@@ -101,6 +107,11 @@ class UsuarioController extends Controller
     {
         $usuario = Usuario::find($id);
         if($usuario != null){
+            $historial = New Historial_usuario;
+            $historial->accion = "Se ha eliminado el usuario con id".$usuario->id;
+            $historial->fecha = date('Y-m-d');
+            $historial->hora = date('H:m:s');
+            $historial->save();
             $usuario->delete();
             Usuario::destroy($id);
             return "usuario elimina3";

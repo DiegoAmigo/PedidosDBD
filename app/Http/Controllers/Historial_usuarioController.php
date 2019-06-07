@@ -17,7 +17,7 @@ class Historial_usuarioController extends Controller
      */
     public function index()
     {
-        
+        return Historial_usuario::all();
     }
 
     /**
@@ -42,17 +42,17 @@ class Historial_usuarioController extends Controller
         $historial_usuario->accion = $request->accion;
         $historial_usuario->fecha = $request->fecha;
         $historial_usuario->hora = $request->hora;
-        
-     
+
+
         $usuario = Usuario::find($request->get('id_usuario'));
         if($usuario!=null){
             $historial_usuario->id_usuario = $request->id_usuario;
             $historial_usuario->save();
-        return $valoracion;
+            return $historial_usuario;
         }
         else{
             //respuesta temporal
-            return "hola";
+            return "No se pudo guardar el historial, debido a que no se encontró el usuario";
         }
     }
     /**
@@ -71,7 +71,7 @@ class Historial_usuarioController extends Controller
         else{
             return "Historial de usuario no encontrada";
         }
-        
+
     }
     /**
      * Show the form for editing the specified resource.

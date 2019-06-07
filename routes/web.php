@@ -23,6 +23,7 @@ Route::post('/usuarios/comentar/{id_usuario}', 'UsuarioController@comentarLocal'
 Route::get('/pedidos/{id_usuario}', 'PedidoController@pedidosUsuario');
 
 Route::post('/usuarios/reservarMesa', 'UsuarioController@reservaMesa');
+Route::post('/usuarios/realizarPedido', 'UsuarioController@realizarPedido');
 Route::get('/mesasUsu/disponibles/{id_local}', 'Mesas_UsuarioController@mostrarMesasDisponibles');
 
 Route::get('/categorias/locales/{id}', 'CategoriaController@locales');

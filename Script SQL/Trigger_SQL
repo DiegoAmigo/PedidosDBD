@@ -1,0 +1,14 @@
+CREATE OR REPLACE FUNCTION historial_pedido() RETURNS TRIGGER AS $historial_pedido$
+  DECLARE
+  BEGIN
+   INSERT INTO historial_usuarios (id_usuario,accion,fecha,hora)
+        VALUES (NEW.id_usuario,'Realiza pedido',current_date, CURRENT_TIME);
+
+   RETURN NULL;
+  END
+$historial_pedido$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER rellenar_historial AFTER INSERT
+    ON pedidos FOR EACH ROW
+    EXECUTE PROCEDURE historial_pedido();

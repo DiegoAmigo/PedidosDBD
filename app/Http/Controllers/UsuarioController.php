@@ -157,6 +157,31 @@ class UsuarioController extends Controller
         }
     }
 
+
+
+    public function realizarPedido(Request $request){
+
+        $controladorPedido = new PedidoController;
+        $pedido = $controladorPedido->store($request);
+        $cantidadMenu = count($request->menus);
+        $pos = 0;
+        while ( pos < $cantidadMenu ) {
+            
+            $requestPedido = new Request(array('id_pedido' =>$pedido->id,'id_menu' =>($request->menus)[pos]->id,'aclaraciones' =>($request->menus)[pos]->aclaraciones));
+             $menuPedido = new Menu_Pedido;
+        $menuPedido->id_pedido = $pedido->id;
+        $menuPedido->id_menu = ($request->menus)[pos]->id;
+        $menuPedido->aclaraciones = ($request->menus)[pos]->aclaraciones;
+        $menuPedido->save();
+        $pos = $pos + 1;
+        }
+
+        return "pedido realizado";
+
+
+    }
+
+
     public function comentarLocal(Request $request, $id_usuario){
         $usuario = Usuario::find($id_usuario);
         $local = Local::find($request->id_local);

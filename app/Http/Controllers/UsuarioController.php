@@ -161,10 +161,17 @@ class UsuarioController extends Controller
 
         $controladorPedido = new PedidoController;
         $pedido = $controladorPedido->store($request);
-        foreach ($request->menus as $menu) {
-            $controladorMenuPedido = new Menu_PedidoController;
-            $requestPedido = new Request(array('id_pedido' =>$pedido->id,'id_menu' =>$id_menu->id,'aclaraciones' =>$id_menu->aclaraciones));
-            $controladorMenuPedido->store($requestPedido);
+        $cantidadMenu = count($request->menus);
+        $pos = 0;
+        while ( pos < $cantidadMenu ) {
+            
+            $requestPedido = new Request(array('id_pedido' =>$pedido->id,'id_menu' =>($request->menus)[pos]->id,'aclaraciones' =>($request->menus)[pos]->aclaraciones));
+             $menuPedido = new Menu_Pedido;
+        $menuPedido->id_pedido = $pedido->id;
+        $menuPedido->id_menu = ($request->menus)[pos]->id;
+        $menuPedido->aclaraciones = ($request->menus)[pos]->aclaraciones;
+        $menuPedido->save();
+        $pos = $pos + 1;
         }
 
         return "pedido realizado";

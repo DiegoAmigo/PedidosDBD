@@ -18,3 +18,4 @@ drop table menus_productos cascade;
 drop table menus_pedidos cascade;
 drop table productos_ingredientes cascade;
 drop table pedidos_metodo_pagos cascade;
+drop table pedidos cascade;

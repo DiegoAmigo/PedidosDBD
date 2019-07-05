@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>LOTOM</title>
+    <title>PedidosYa</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
-    
+
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -21,13 +21,13 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
 
-    
+
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    
+
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
       <div class="container">
         <a class="navbar-brand" href="/inicio">LON</a>
@@ -48,7 +48,7 @@
       </div>
     </nav>
     <!-- END nav -->
-    
+
     <section class="home-slider owl-carousel">
       <div class="slider-item" style="background-image: url('imagenes/sandwich-3.jpg');">
         <div class="overlay"></div>
@@ -97,11 +97,11 @@
                 <a class="nav-link p-3" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Paquetes</a>
               </div>
             </div>
-              
+
             <div class="tab-content py-5" id="v-pills-tabContent">
               <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <div class="block-17">
-                  <div class="checkbox-inline"> 
+                  <div class="checkbox-inline">
                    <label style="color: white"><input type="checkbox" name="Vuelta" id="vuelta" onchange="vuelta()"> Ida y Vuelta</label>
                  </div>
                   <form action="" method="post" class="d-block d-lg-flex">
@@ -123,7 +123,7 @@
                         </select>
                       </div>
                     </div>
-                    <input type="submit" class="search-submit btn btn-primary" value="Find Flights">  
+                    <input type="submit" class="search-submit btn btn-primary" value="Find Flights">
                   </form>
                 </div>
               </div>
@@ -147,7 +147,7 @@
                         </select>
                       </div>
                     </div>
-                    <input type="submit" class="search-submit btn btn-primary" value="Find Hotels">  
+                    <input type="submit" class="search-submit btn btn-primary" value="Find Hotels">
                   </form>
                 </div>
               </div>
@@ -171,7 +171,7 @@
                         </select>
                       </div>
                     </div>
-                    <input type="submit" class="search-submit btn btn-primary" value="Find Car">  
+                    <input type="submit" class="search-submit btn btn-primary" value="Find Car">
                   </form>
                 </div>
               </div>
@@ -196,7 +196,7 @@
                         </select>
                       </div>
                     </div>
-                    <input type="submit" class="search-submit btn btn-primary" value="Find Cruise">  
+                    <input type="submit" class="search-submit btn btn-primary" value="Find Cruise">
                   </form>
                 </div>
               </div>
@@ -216,7 +216,7 @@
           </div>
           <div class="text col-lg-6 ftco-animate">
             <div class="text-inner align-self-start">
-              
+
               <h3>Bienvenidos a LOTOM establecidos hace poco, para ser más exactos desde el año pasado.</h3>
               <p>Grupo de trabajo establecido para el ramo Diseño de base datos en donde se pide simular una página web sobre venta de pasajes tipo LATAM.</p>
 
@@ -412,8 +412,8 @@
         </div>
       </div>
     </footer>
-    
-  
+
+
 <script>
 function vuelta(){
                 element = document.getElementById("checkout_date");
@@ -448,6 +448,6 @@ function vuelta(){
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-    
+
   </body>
 </html>

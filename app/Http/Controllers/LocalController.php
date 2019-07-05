@@ -15,7 +15,16 @@ class LocalController extends Controller
      */
     public function index()
     {
-        return Local::all();
+        $localess = Local::all();
+        return view('verLocal', compact('localess'));
+    }
+
+
+    //vista para el admin
+    public function index3()
+    {
+        $locales = Local::all();
+        return view('aprobarLocales', compact('locales'));
     }
 
     /**
@@ -46,7 +55,7 @@ class LocalController extends Controller
         $local->cadena = $request->cadena;
         $local->nombre_local = $request->nombre_local;
         $local->save();
-        return $local;
+        return back();
     }
 
     /**
@@ -59,7 +68,18 @@ class LocalController extends Controller
     {
         $local = Local::find($id);
         if($local != NULL){
-            return $local;
+            return view('aprobarElLocal', compact('local'));
+        }
+        else{
+            return "El local con el id ingresado no existe en nuestro sistema";
+        }
+    }
+
+    public function show2($id)
+    {
+        $local = Local::find($id);
+        if($local != NULL){
+            return view('aprobarElLocal', compact('local'));
         }
         else{
             return "El local con el id ingresado no existe en nuestro sistema";

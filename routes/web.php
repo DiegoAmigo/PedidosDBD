@@ -38,9 +38,10 @@ Route::get('/categorias/locales/{id}', 'CategoriaController@locales');
 Route::get('/historial_usuarios/usuario/{id}', 'Historial_usuarioController@historial_usuarioDeUsuario');
 
 
+//seccion admin VISTA
 //para el admin cuando debe aprobar el local
-
 Route::get('/adminlocales', 'LocalController@index3');
+
 
 Route::post('/locales/aprobar/{id_Local}', 'LocalController@aprobar')->name('locales.aprobar');
 

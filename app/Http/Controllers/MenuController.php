@@ -133,4 +133,12 @@ class MenuController extends Controller
     }
 
 
+    public function menuEnLocal(Request $request)
+    {
+        $menu = Menu::where('id_local', $request->id_local)->get();
+        
+        return view('menus',['menus' => $menu]);
+    }
+
+
 }

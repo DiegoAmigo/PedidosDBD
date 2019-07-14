@@ -124,4 +124,10 @@ class UbicacionController extends Controller
     }
 
 
+    public static function obtenerUbicaciones()
+    {
+        return Ubicacion::all();
+    }
+
+
 }

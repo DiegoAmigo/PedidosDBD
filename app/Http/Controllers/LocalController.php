@@ -155,4 +155,13 @@ class LocalController extends Controller
         $historial->save();
         return "local aprobado";
     }
+
+
+    public function localesEnZona(Request $request)
+    {
+        $locales = Local::where('id', $request->pais)->get();
+        
+        return view('locales',['localess' => $locales]);
+        
+    }
 }

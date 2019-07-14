@@ -84,12 +84,36 @@ Route::resource('/ubicaciones', 'UbicacionController');
 
 Route::resource('/valoraciones', 'ValoracionController');
 
+Route::post('/locales/localesEnZona', 'LocalController@localesEnZona')->name('locales/localesEnZona');
 
+Route::post('/menus/menus-local', 'MenuController@menuEnLocal')->name('menus/en-local');
+
+Route::post('/carrito/agregar', 'CarritoController@agregarCarrito')->name('carrito/agregar');
+
+Route::post('/carrito', 'CarritoController@actualizarCarrito')->name('carrito/actualizar');
+
+Route::post('/carrito', 'CarritoController@quitarCarrito')->name('carrito/quitar');
+
+Route::post('/carrito', 'CarritoController@obtenerCarrito')->name('carrito/obtener');
+
+Route::post('/carrito', 'CarritoController@destruirCarrito')->name('carrito/destruir');
+
+Route::post('/carrito', 'CarritoController@totalCarrito')->name('carrito/total');
+
+Route::post('/carrito/obtenerTodo', 'CarritoController@obtenerTodoCarrito')->name('carrito/obtenerTodo');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/barras', function () {
+    return view('barraSuperior');
+});
+
+Route::get('/carrito', function () {
+    return view('carrito');
+});

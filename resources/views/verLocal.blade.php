@@ -1,4 +1,4 @@
-@extends('plantilla')
+@extends('barraSuperior')
 
 @section('seccion')
 <!---VER como hacer que se muestra solo para el que adminsitre el local--->

@@ -114,6 +114,10 @@ Route::get('/barras', function () {
     return view('barraSuperior');
 });
 
+Route::get('/mesass', function () {
+    return view('mesass');
+});
+
 Route::get('/carrito', function () {
     return view('carrito');
 });

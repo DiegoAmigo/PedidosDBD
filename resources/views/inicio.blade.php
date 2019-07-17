@@ -1,55 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>PedidosYa</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
+@extends('barraSuperior')
+<?php
+    use App\Local;
+    use App\Menu;
+    $locales = Local::all();
+    $menus = Menu::all();
+?>
+@section('seccion')
+    
+    
+    @inject('UbicacionController', 'App\Http\Controllers\UbicacionController')
+    <?php 
+      $datos =  $UbicacionController->obtenerUbicaciones();
+    ?>
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/ionicons.min.css">
-
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    
+    
 
 
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-      <div class="container">
-        <a class="navbar-brand" href="/inicio">LON</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="oi oi-menu"></span> Menu
-        </button>
-
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="/inicio" class="nav-link">Inicio</a></li>
-            <li class="nav-item"><a href="/paquetes" class="nav-link">Paquetes</a></li>
-            <li class="nav-item"><a href="/hoteles" class="nav-link">Hoteles</a></li>
-            <li class="nav-item"><a href="/autos" class="nav-link">Autos</a></li>
-            <li class="nav-item"><a href="/sobre" class="nav-link">Sobre nosotros</a></li>
-            <li class="nav-item"><a href="/contacto" class="nav-link">Contacto</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- END nav -->
-
-    <section class="home-slider owl-carousel">
+    <section class="home-slider owl-carousel" >
       <div class="slider-item" style="background-image: url('imagenes/sandwich-3.jpg');">
         <div class="overlay"></div>
         <div class="container">
@@ -83,7 +52,7 @@
         </div>
       </div>
     </section>
-    <!-- END slider -->
+    
 
     <div class="ftco-section-search">
       <div class="container">
@@ -91,363 +60,251 @@
           <div class="col-md-12 tabulation-search">
             <div class="element-animate">
               <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link p-3 active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"> Vuelos</a>
-                <a class="nav-link p-3" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"> Hotel</a>
-                <a class="nav-link p-3" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"> Autos</a>
-                <a class="nav-link p-3" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Paquetes</a>
+                <a class="nav-link p-3 active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"> Ubicación</a>
               </div>
             </div>
 
             <div class="tab-content py-5" id="v-pills-tabContent">
               <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <div class="block-17">
-                  <div class="checkbox-inline">
-                   <label style="color: white"><input type="checkbox" name="Vuelta" id="vuelta" onchange="vuelta()"> Ida y Vuelta</label>
-                 </div>
-                  <form action="" method="post" class="d-block d-lg-flex">
+                  
+                  <form method="POST"  action="{{ route('locales/localesEnZona') }}" class="d-block d-lg-flex">
+                    @method('POST')
+                    @csrf
                     <div class="fields d-block d-lg-flex">
 
-                      <div class="textfield-search one-third"><input type="text" class="form-control" placeholder="Search Location"></div>
-
-                      <div class="check-in one-third"><input type="text" id="checkin_date" class="form-control" placeholder="Check-in date"></div>
-
-                      <div class="check-out one-third"><input type="text" id="checkout_date" class="form-control" placeholder="Check-out date"></div>
+                      
                       <div class="select-wrap one-third">
                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                        <select name="" id="" class="form-control">
-                          <option value="">Guest</option>
-                          <option value="">1</option>
-                          <option value="">2</option>
-                          <option value="">3</option>
-                          <option value="">4+</option>
+                        <select name="pais" id="pais" class="form-control">
+                            @foreach((array)(last($datos)) as $dato)
+                                <option style="color: black" id="{{($dato)->id}}" value="{{($dato)->id}}">{{($dato)->pais}}</option>
+                            @endforeach
+                          
                         </select>
                       </div>
                     </div>
-                    <input type="submit" class="search-submit btn btn-primary" value="Find Flights">
+                    
+
+                    
+                    <button type="submit" style="background-color: white ; color: black " class="btn btn-primary " onclick="obtenerUbicacion()">Buscar locales</button>
                   </form>
                 </div>
               </div>
-              <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                <div class="block-17">
-                  <form action="" method="post" class="d-block d-lg-flex">
-                    <div class="fields d-block d-lg-flex">
-                      <div class="textfield-search one-third"><input type="text" class="form-control" placeholder="Search Hotel"></div>
-
-                      <div class="check-in one-third"><input type="text" id="checkin_date" class="form-control" placeholder="Check-in date"></div>
-
-                      <div class="check-out one-third"><input type="text" id="checkout_date" class="form-control" placeholder="Check-out date"></div>
-                      <div class="select-wrap one-third">
-                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                        <select name="" id="" class="form-control">
-                          <option value="">Guest</option>
-                          <option value="">1</option>
-                          <option value="">2</option>
-                          <option value="">3</option>
-                          <option value="">4+</option>
-                        </select>
-                      </div>
-                    </div>
-                    <input type="submit" class="search-submit btn btn-primary" value="Find Hotels">
-                  </form>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                <div class="block-17">
-                  <form action="" method="post" class="d-block d-lg-flex">
-                    <div class="fields d-block d-lg-flex">
-                      <div class="textfield-search one-third"><input type="text" class="form-control" placeholder="Search Location"></div>
-
-                      <div class="check-in one-third"><input type="text" id="start_date" class="form-control" placeholder="Start date"></div>
-
-                      <div class="check-out one-third"><input type="text" id="return_date" class="form-control" placeholder="Return date"></div>
-                      <div class="select-wrap one-third">
-                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                        <select name="" id="" class="form-control">
-                          <option value="">Guest</option>
-                          <option value="">1</option>
-                          <option value="">2</option>
-                          <option value="">3</option>
-                          <option value="">4+</option>
-                        </select>
-                      </div>
-                    </div>
-                    <input type="submit" class="search-submit btn btn-primary" value="Find Car">
-                  </form>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                <div class="block-17">
-                  <form action="" method="post" class="d-block d-lg-flex">
-                    <div class="fields d-block d-lg-flex">
-                      <div class="textfield-search one-third one-third-1"><input type="text" class="form-control" placeholder="Search Location"></div>
-
-
-                      <div class="check-out one-third one-third-1"><input type="text" id="start_date" class="form-control" placeholder="Check-out date"></div>
-
-                      <div class="select-wrap one-third one-third-1">
-                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                        <select name="" id="" class="form-control">
-                          <option value="">Categories</option>
-                          <option value="">Suite</option>
-                          <option value="">Super Deluxe</option>
-                          <option value="">Balcony</option>
-                          <option value="">Economy</option>
-                          <option value="">Luxury</option>
-                        </select>
-                      </div>
-                    </div>
-                    <input type="submit" class="search-submit btn btn-primary" value="Find Cruise">
-                  </form>
-                </div>
-              </div>
+              
+              
+              
+              
             </div>
           </div>
         </div>
       </div>
     </div>
 
-
-    <!-- sección de descripción de nosotros-->
     <section class="ftco-section-2">
-      <div class="container-fluid d-flex">
-        <div class="section-2-blocks-wrapper row no-gutters" style="display: contents;">
-          <div class="img col-sm-12 col-lg-6" style="background-image: url('images/tour-1.jpg');">
+    <div class="container-fluid d-flex">
+      <div class="section-2-blocks-wrapper row no-gutters" >
+            <div class="img col-sm-12 col-lg-6" style="background-image: url('imagenes/logoPDBD2.jpg');">
+              </div>
+        <div class="text col-lg-6 ftco-animate">
+          <div class="text-inner align-self-start">
 
+            <h3>Bienvenido a PedidosDBD</h3>
+            <p>En donde tus pedidos online llegan a tu casa a tan solo un par de clics. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+
+            <p>Empieza ya a hacer tu menu para disfrutar tu día.</p>
           </div>
-          <div class="text col-lg-6 ftco-animate">
-            <div class="text-inner align-self-start">
+        </div>
+      </div>
+    </div>
+  </section>
 
-              <h3>Bienvenidos a LOTOM establecidos hace poco, para ser más exactos desde el año pasado.</h3>
-              <p>Grupo de trabajo establecido para el ramo Diseño de base datos en donde se pide simular una página web sobre venta de pasajes tipo LATAM.</p>
+  <section class="ftco-section">
+    <div class="container">
+            <div class="row justify-content-center mb-5 pb-5">
+                    <div class="col-md-7 text-center heading-section ftco-animate">
+                        <h2>Locales</h2>
+                    </div>
+                </div>
+      <div class="row">
+            @foreach ($locales as $local)
+                @if ($loop->index <4)
+                    @if ($loop->index == 0)
+                    <div class="col-lg-3 promo ftco-animate">
+                            <a href="{{ route('locales.show', $local) }}" class="promo-img mb-4" style="background-image: url(images/promo-1.jpg);"></a>
+                            <div class="text text-center">
+                                    <h2>{{$local->nombre_local}}</h2>
+                                    <h3 class="price"><span>Precio Entrega</span> {{$local->valor_entrega}}</h3>
+                                    <a href="{{ route('locales.show', $local) }}" class="read">Ver Más</a>
+                                </div>
+                    </div>
+                    @endif
+                    @if ($loop->index == 1)
+                    <div class="col-lg-3 promo ftco-animate">
+                            <a href="{{ route('locales.show', $local) }}" class="promo-img mb-4" style="background-image: url(images/promo-1.jpg);"></a>
+                            <div class="text text-center">
+                                    <h2>{{$local->nombre_local}}</h2>
+                                    <h3 class="price"><span>Precio Entrega</span> {{$local->valor_entrega}}</h3>
+                                    <a href="{{ route('locales.show', $local) }}" class="read">Ver Más</a>
+                                </div>
+                    </div>
+                    @endif
+                    @if ($loop->index == 2)
+                    <div class="col-lg-3 promo ftco-animate">
+                            <a href="{{ route('locales.show', $local) }}" class="promo-img mb-4" style="background-image: url(images/promo-1.jpg);"></a>
+                            <div class="text text-center">
+                                    <h2>{{$local->nombre_local}}</h2>
+                                    <h3 class="price"><span>Precio Entrega</span> {{$local->valor_entrega}}</h3>
+                                    <a href="{{ route('locales.show', $local) }}" class="read">Ver Más</a>
+                                </div>
+                    </div>
+                    @endif
+                    @if ($loop->index == 3)
+                    <div class="col-lg-3 promo ftco-animate">
+                            <a href="{{ route('locales.show', $local) }}" class="promo-img mb-4" style="background-image: url(images/promo-1.jpg);"></a>
+                            <div class="text text-center">
+                                    <h2>{{$local->nombre_local}}</h2>
+                                    <h3 class="price"><span>Precio Entrega</span> {{$local->valor_entrega}}</h3>
+                                    <a href="{{ route('locales.show', $local) }}" class="read">Ver Más</a>
+                                </div>
+                    </div>
+                    @endif
+                @endif
+          @endforeach
+      </div>
+    </div>
+  </section>
 
-              <p>Ojalá disfrute la experiencia en esta página</p>
+  <section class="ftco-section">
+        <div class="container-fluid">
+          <div class="row no-gutters justify-content-center mb-5 pb-5 ftco-animate">
+            <div class="col-md-7 text-center heading-section">
+              <h2>Menus</h2>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ftco-section">
-      <div class="container-fluid">
-        <div class="row no-gutters justify-content-center mb-5 pb-5 ftco-animate">
-          <div class="col-md-7 text-center heading-section">
-            <h2>Destinos Populares</h2>
+          <div class="row no-gutters">
+              @foreach ($menus as $menu)
+              @php
+                  $local2= Local::find($menu->id_local);
+              @endphp
+                  @if ($loop->index <8)
+                      @if ($loop->index==0)
+                      <div class="col-md-6 col-lg-3 ftco-animate">
+                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                              <div class="text">
+                                <span class="price">Precio: {{$menu->precio}}</span>
+                                <h3 class="heading">{{$menu->nombre}}</h3>
+                                <div class="post-meta">
+                                  <span>Local: {{$local2->nombre_local}}</span>
+                                </div>
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                              </div>
+                            </a>
+                          </div>
+                      @endif
+                      @if ($loop->index==1)
+                      <div class="col-md-6 col-lg-3 ftco-animate">
+                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                              <div class="text">
+                                <span class="price">Precio: {{$menu->precio}}</span>
+                                <h3 class="heading">{{$menu->nombre}}</h3>
+                                <div class="post-meta">
+                                  <span>Local: {{$local2->nombre_local}}</span>
+                                </div>
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                              </div>
+                            </a>
+                          </div>
+                      @endif
+                      @if ($loop->index==2)
+                      <div class="col-md-6 col-lg-3 ftco-animate">
+                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                              <div class="text">
+                                <span class="price">Precio: {{$menu->precio}}</span>
+                                <h3 class="heading">{{$menu->nombre}}</h3>
+                                <div class="post-meta">
+                                  <span>Local: {{$local2->nombre_local}}</span>
+                                </div>
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                              </div>
+                            </a>
+                          </div>
+                      @endif
+                      @if ($loop->index==3)
+                      <div class="col-md-6 col-lg-3 ftco-animate">
+                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                              <div class="text">
+                                <span class="price">Precio: {{$menu->precio}}</span>
+                                <h3 class="heading">{{$menu->nombre}}</h3>
+                                <div class="post-meta">
+                                  <span>Local: {{$local2->nombre_local}}</span>
+                                </div>
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                              </div>
+                            </a>
+                          </div>
+                      @endif
+                      @if ($loop->index==4)
+                      <div class="col-md-6 col-lg-3 ftco-animate">
+                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                              <div class="text">
+                                <span class="price">Precio: {{$menu->precio}}</span>
+                                <h3 class="heading">{{$menu->nombre}}</h3>
+                                <div class="post-meta">
+                                  <span>Local: {{$local2->nombre_local}}</span>
+                                </div>
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                              </div>
+                            </a>
+                          </div>
+                      @endif
+                      @if ($loop->index==5)
+                      <div class="col-md-6 col-lg-3 ftco-animate">
+                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                              <div class="text">
+                                <span class="price">Precio: {{$menu->precio}}</span>
+                                <h3 class="heading">{{$menu->nombre}}</h3>
+                                <div class="post-meta">
+                                  <span>Local: {{$local2->nombre_local}}</span>
+                                </div>
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                              </div>
+                            </a>
+                          </div>
+                      @endif
+                      @if ($loop->index==6)
+                      <div class="col-md-6 col-lg-3 ftco-animate">
+                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                              <div class="text">
+                                <span class="price">Precio: {{$menu->precio}}</span>
+                                <h3 class="heading">{{$menu->nombre}}</h3>
+                                <div class="post-meta">
+                                  <span>Local: {{$local2->nombre_local}}</span>
+                                </div>
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                              </div>
+                            </a>
+                          </div>
+                      @endif
+                      @if ($loop->index==7)
+                      <div class="col-md-6 col-lg-3 ftco-animate">
+                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                              <div class="text">
+                                <span class="price">Precio: {{$menu->precio}}</span>
+                                <h3 class="heading">{{$menu->nombre}}</h3>
+                                <div class="post-meta">
+                                  <span>Local: {{$local2->nombre_local}}</span>
+                                </div>
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                              </div>
+                            </a>
+                          </div>
+                      @endif
+                  @endif
+              @endforeach
           </div>
         </div>
-        <div class="row no-gutters">
-          <div class="col-md-6 col-lg-3 ftco-animate">
-            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
-              <div class="text">
-                <span class="price">CLP 17.390</span>
-                <h3 class="heading">Punta Arenas</h3>
-                <div class="post-meta">
-                  <span>Santiago de Chile</span>
-                </div>
-                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-3 ftco-animate">
-            <a href="#" class="block-5" style="background-image: url('images/tour-2.jpg');">
-              <div class="text">
-                <span class="price">CLP 13.582</span>
-                <h3 class="heading">Puerto Montt</h3>
-                <div class="post-meta">
-                  <span>Santiago de Chile</span>
-                </div>
-                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-3 ftco-animate">
-            <a href="#" class="block-5" style="background-image: url('images/tour-3.jpg');">
-              <div class="text">
-                <span class="price">CLP 10.582</span>
-                <h3 class="heading">Concepción</h3>
-                <div class="post-meta">
-                  <span>Santiago de Chile</span>
-                </div>
-                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-3 ftco-animate">
-            <a href="#" class="block-5" style="background-image: url('images/tour-4.jpg');">
-              <div class="text">
-                <span class="price">CLP 578.457</span>
-                <h3 class="heading">Isla de Pascua</h3>
-                <div class="post-meta">
-                  <span>Santiago de Chile</span>
-                </div>
-                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-3 ftco-animate">
-            <a href="#" class="block-5" style="background-image: url('images/tour-5.jpg');">
-              <div class="text">
-                <span class="price">CLP 16.582</span>
-                <h3 class="heading">Valdivia</h3>
-                <div class="post-meta">
-                  <span>Santiago de Chile</span>
-                </div>
-                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-3 ftco-animate">
-            <a href="#" class="block-5" style="background-image: url('images/tour-6.jpg');">
-              <div class="text">
-                <span class="price">CLP 19.082</span>
-                <h3 class="heading">Arica</h3>
-                <div class="post-meta">
-                  <span>Santiago de Chile</span>
-                </div>
-                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-3 ftco-animate">
-            <a href="#" class="block-5" style="background-image: url('images/tour-7.jpg');">
-              <div class="text">
-                <span class="price">CLP 11.082</span>
-                <h3 class="heading">La Serena</h3>
-                <div class="post-meta">
-                  <span>Santiago de Chile</span>
-                </div>
-                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-3 ftco-animate">
-            <a href="#" class="block-5" style="background-image: url('images/tour-8.jpg');">
-              <div class="text">
-                <span class="price">CLP 19.092</span>
-                <h3 class="heading">Osorno</h3>
-                <div class="post-meta">
-                  <span>Santiago de Chile</span>
-                </div>
-                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="ftco-section">
-      <div class="container-fluid">
-        <div class="row mb-5 pb-5 no-gutters">
-          <!-- Sección extra en caso de necesitarla
-          <div class="col-lg-4 bg-light p-3 p-md-5 d-flex align-items-center heading-section ftco-animate">
-            <div>
-              <h2 class="mb-5 pb-3">Want to get our hottest travel deals top tips and advice? Subscribe us now!</h2>
-              <form action="#" class="subscribe-form">
-                <div class="form-group">
-                  <span class="icon icon-paper-plane"></span>
-                  <input type="text" class="form-control" placeholder="Enter your email address">
-                </div>
-              </form>
-            </div>
-          </div>-->
-
-          <!-- Paquetes que aparecen--->
-          <div class="col heading-section">
-            <h2 class="mb-5 p-2 pb-3 ftco-animate">Paquetes Recomendados</h2>
-            <div class="row no-gutters d-flex">
-              <div class="col-md-4 ftco-animate">
-                <a href="#" class="block-5" style="background-image: url('images/hotel-1.jpg');">
-                  <div class="text">
-                    <span class="price">CLP 597.864</span>
-                    <h3 class="heading">Miami</h3>
-                    <h3 class="heading">Paquete turístico</h3>
-                    <div class="post-meta">
-                      <span>Precio final por persona, Pasajes + 7 noches en hotel</span>
-                    </div>
-                    <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
-                  </div>
-                </a>
-              </div>
-              <div class="col-md-4 ftco-animate">
-                <a href="#" class="block-5" style="background-image: url('images/hotel-2.jpg');">
-                  <div class="text">
-                    <span class="price">CLP 782.469</span>
-                    <h3 class="heading">Cancún</h3>
-                    <h3 class="heading"> Paquete turístico</h3>
-                    <div class="post-meta">
-                      <span>Precio final por persona, Pasaje + 7 noches en hotel</span>
-                    </div>
-                    <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
-                  </div>
-                </a>
-              </div>
-              <div class="col-md-4 ftco-animate">
-                <a href="#" class="block-5" style="background-image: url('images/hotel-3.jpg');">
-                  <div class="text">
-                    <span class="price">CLP 189.999</span>
-                    <h3 class="heading">Lima</h3>
-                    <h3 class="heading"> Paquete turístico</h3>
-                    <div class="post-meta">
-                      <span>Precio final por persona, pasajes + 2 noches en hotel</span>
-                    </div>
-                    <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-
-<script>
-function vuelta(){
-                element = document.getElementById("checkout_date");
-                check1 = document.getElementById("vuelta");
-                if (check1.checked) {
-                    element.style.display='d-block';
-                }
-                else{
-                    element.style.display='none';
-                }
-            }
-</script>
-
-
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-
-  </body>
-</html>
+    
+@endsection

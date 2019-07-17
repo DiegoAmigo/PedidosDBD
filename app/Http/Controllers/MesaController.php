@@ -15,9 +15,12 @@ class MesaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
-
+        $mesas = Mesa::all();
+        return view('mesass',['mesass' => $mesas]);
     }
 
     /**

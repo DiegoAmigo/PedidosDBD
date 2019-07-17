@@ -23,11 +23,11 @@ class MenuPedidoTrigger extends Migration
                  
                 
                 update pedidos set total_precio = pe.suma 
-from (SELECT sum(m.precio) as suma, p.id as id_pedido
-FROM  menus m, menus_pedidos mp, pedidos p
-where m.id = mp.id_menu AND p.id = mp.id_pedido
-group by p.id) as pe
-where pedidos.id = pe.id_pedido;
+                from (SELECT sum(m.precio) as suma, p.id as id_pedido
+                FROM  menus m, menus_pedidos mp, pedidos p
+                where m.id = mp.id_menu AND p.id = mp.id_pedido
+                group by p.id) as pe
+                where pedidos.id = pe.id_pedido;
                 RETURN NULL;
             END
                 $$ LANGUAGE plpgsql;

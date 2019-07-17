@@ -15,7 +15,7 @@
 
                     <div class="row justify-content-center mb-5 pb-5">
                     <div class="col-md-7 text-center heading-section ftco-animate">
-                        <h2>Realiza tu reserva</h2>
+                        <h2>Ingrese la fecha y hora que desea reservar</h2>
 
 
                     </div>
@@ -24,14 +24,17 @@
             <div class="row">
 
               <!-- Aquí empiezan cada bloque con las mesas--->
-              <form name="formulario" method="post" action="http://pagina.com/send.php">
+              <form method="POST" action="{{route('mesasUsu/disponibles')}}">
+                @method('POST')
+                    @csrf
+                <input  name="id_local" value= "{{$id_local}}" style="display:none">
                 <!-- Campo de entrada de fecha -->
-                Selecciona la fecha de la reserva:<input type="date" name="fecha" min="2019-07-17"max="2019-08-01" step="2">
+                Selecciona la fecha de la reserva:<input type="date" name="fecha" min="2019-07-17"max="2019-08-01" step="2" class="form-control">
                 <!-- Campo de entrada de hora -->
                 Selecciona la hora de la reserva:
-                <input type="time" name="hora" min="12:00" max="23:00:00" step="1">
+                <input type="time" name="hora" min="12:00" max="23:00:00" step="1" class="form-control">
 
-                <button type="submit" style="background-color: white ; color: black " class="btn btn-primary " >Reservar</button>
+                <button type="submit" style="background-color: white ; color: black " class="btn btn-primary " >Ver mesas disponibles</button>
                   </form>
 </form>
             
@@ -47,3 +50,7 @@
     </section>
 
 @endsection
+
+
+
+

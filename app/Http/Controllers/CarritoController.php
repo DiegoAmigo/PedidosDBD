@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Horario;
 use App\Local;
+use App\Menu;
 use Cart;
 class CarritoController extends Controller
 {
@@ -15,7 +16,7 @@ class CarritoController extends Controller
      */
     public function agregarCarrito(Request $request)
     {
-        Cart::add($request->id, $request->nombre,$request->cantidad, $request->valor);
+        Cart::add($request->id, $request->nombre,$request->cantidad, $request->valor)->associate('App\Menu');
     }
 
     /**
@@ -39,6 +40,11 @@ class CarritoController extends Controller
         Cart::remove($request->id);
     }
 
+    public function quitarCarritoG($id)
+    {
+        Cart::remove($id);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -59,6 +65,11 @@ class CarritoController extends Controller
     public function destruirCarrito(Request $request)
     {
         Cart::destroy();
+    }
+
+    public function destruirCarritoG()
+    {
+        return Cart::destroy();
     }
 
     /**
@@ -84,7 +95,9 @@ class CarritoController extends Controller
      */
     public function obtenerTodoCarrito()
     {
-        return Cart::content();
+        $carritoActual = Cart::content();
+        $total = Cart::total();
+         return view('carrito',['menus' => $carritoActual , 'total' => $total]);
     }
 
 

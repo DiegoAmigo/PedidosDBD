@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="{{ asset('css/flaticon.css')}}">
     <link rel="stylesheet" href="{{ asset('css/icomoon.css')}}">
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+
+    
   </head>
 
   
@@ -71,7 +73,9 @@
 
           </ul>
           <ul class="navbar-nav  d-lg-flex ml-2 order-4">
-            
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('carrito/obtenerTodo') }}">Carrito<i class="icon-shopping-cart" aria-hidden="true"></i></a>
+            </li>
             @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

@@ -104,9 +104,20 @@ Route::resource('/valoraciones', 'ValoracionController');
 
 Route::post('/locales/localesEnZona', 'LocalController@localesEnZona')->name('locales/localesEnZona');
 
+
+Route::post('/locales/localesEnZona', 'LocalController@localesEnZona')->name('locales/localesEnZona');
+
+Route::post('/locales/localesNombre', 'LocalController@localesNombre')->name('locales/localesNombre');
+
+Route::post('/locales/categoria', 'LocalController@localesPorCategoria')->name('locales/categoria');
+
+Route::post('/locales/valoracion', 'LocalController@localesPorValoracion')->name('locales/valoracion');
+
+
+
 Route::post('/menus/menus-local', 'MenuController@menuEnLocal')->name('menus/en-local');
 
-Route::post('/carrito/agregar', 'CarritoController@agregarCarrito')->name('carrito/agregar');
+Route::post('carrito/agregar', 'CarritoController@agregarCarrito')->name('carrito/agregar');
 
 Route::post('/carrito', 'CarritoController@actualizarCarrito')->name('carrito/actualizar');
 
@@ -118,7 +129,11 @@ Route::post('/carrito', 'CarritoController@destruirCarrito')->name('carrito/dest
 
 Route::post('/carrito', 'CarritoController@totalCarrito')->name('carrito/total');
 
-Route::post('/carrito/obtenerTodo', 'CarritoController@obtenerTodoCarrito')->name('carrito/obtenerTodo');
+Route::get('/carrito/obtenerTodo', 'CarritoController@obtenerTodoCarrito')->name('carrito/obtenerTodo');
+
+Route::get('/carrito/destruir', 'CarritoController@destruirCarritoG')->name('carrito/dest');
+
+
 
 
 
@@ -143,4 +158,8 @@ Route::get('/reserva/{id_local}', function () {
 
 Route::get('/carrito', function () {
     return view('carrito');
+});
+
+Route::get('/pedidos', function () {
+    return view('pedidos');
 });

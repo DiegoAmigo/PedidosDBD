@@ -7,7 +7,7 @@
                 <div class="section-2-blocks-wrapper row no-gutters">
                     <div class="img col-sm-12 col-lg-6" style="background-image: url('images/tour-1.jpg');">
                     </div>
-                    <div class="text col-lg-6 ftco-animate">
+                    <div class="text col-lg-12 ftco-animate flex">
                         <div class="text-inner align-self-start">
                             <h3>{{$local->nombre_local}}</h3>
                             </div>
@@ -37,6 +37,11 @@
                                 </div>
                             </div>
                         </div>
+                        <form method="POST" action="{{route ('locales.aprobar', $local)}}">
+                            <div class="form-group">
+                                <input type="submit" value="Aprobar" class="btn btn-primary py-3 px-5">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

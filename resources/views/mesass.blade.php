@@ -1,10 +1,4 @@
-@extends('plantilla')
-<?php
-    use App\Mesa;
-    $mesas = Mesa::all();
-    use App\Menu;
-    $mesas = Menu::all();
-?>
+@extends('barraSuperior')
 
 @section('seccion')
     
@@ -28,10 +22,11 @@
             <div class="row">
 
               <!-- Aquí empiezan cada bloque con las mesas--->
-              @foreach ($mesas as $mesa)
+              @foreach ($mesass as $mesa)
               <div class="col-md-6 col-lg-6 mb-4 ftco-animate">
                 <a href="#" class="block-5" style="background-image: url('{{ asset('imagenes/mesas-restaurante.jpg')}}');">
                   <div class="text">
+                  	<span>id Local: {{$mesa->id_local}}</span><br/>
                     <span>Cantidad de puestos: {{$mesa->cantidad_puestos}}</span><br/>
                     <span>Numero de la mesa: {{$mesa->numero_mesa}}</span>
                     <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
@@ -45,9 +40,10 @@
               
             </div>
             
-      
+          </div>
         </div>
       </div>
+      
     </section>
 
 @endsection

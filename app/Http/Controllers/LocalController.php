@@ -16,7 +16,7 @@ class LocalController extends Controller
     public function index()
     {
         $localess = Local::all();
-        return view('verLocal', compact('localess'));
+        return view('verLocales', compact('localess'));
     }
 
 
@@ -64,7 +64,19 @@ class LocalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
+    {
+        $local = Local::find($id);
+        if($local != NULL){
+            return view('infoLocal', compact('local'));
+        }
+        else{
+            return "El local con el id ingresado no existe en nuestro sistema";
+        }
+    }
+
+    public function showValidar($id)
     {
         $local = Local::find($id);
         if($local != NULL){
@@ -75,11 +87,11 @@ class LocalController extends Controller
         }
     }
 
-    public function show2($id)
+    public function showAdminLocal($id)
     {
         $local = Local::find($id);
         if($local != NULL){
-            return view('aprobarElLocal', compact('local'));
+            return view('adminVerLocal', compact('local'));
         }
         else{
             return "El local con el id ingresado no existe en nuestro sistema";

@@ -1,6 +1,9 @@
 <?php
 use Illuminate\Support\Facades\Input;
 use App\Local;
+use App\Menu;
+use App\Menu_Producto;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +21,8 @@ Route::get('/mesasUsu/{id_usuario}', 'Mesas_UsuarioController@show');
 
 //postear una mesa nueva
 Route::post('/mesasUsu', 'Mesas_UsuarioController@store');
+
+
 
 //Route::get('pedidos', 'PedidoController@index');
 
@@ -39,13 +44,25 @@ Route::get('/historial_usuarios/usuario/{id}', 'Historial_usuarioController@hist
 
 
 //seccion admin VISTA
-//para el admin cuando debe aprobar el local
-Route::get('/adminlocales', 'LocalController@index3');
+//para el admin cuando quiere ver la lista de locales aprobados y no
+Route::get('/adminverlocales', 'LocalController@index3');
+
+//para el admin cuando quiere aprobar el local
+Route::get('/localess/{id}', 'LocalController@showValidar')->name('locales.validar');
+
+
+//SECCION ADMIN LOCAL VISTAS
+//cuando quiere ver su local y modificar datos del local y agregar nuevo menu
+Route::get('/adminlocal/local/{id}', 'LocalController@showAdminLocal');
+
+Route::post('/adminlocal/local/menu/agregarproducto/{id_menu}/{id_producto}', 'MenuController@agregarProducto')->name('menus.agregarProducto');
+
+Route::get('adminlocal/local/menu/{id}', 'MenuController@showAdminLocal')->name('menus.verMenuAdmin');
 
 
 Route::post('/locales/aprobar/{id_Local}', 'LocalController@aprobar')->name('locales.aprobar');
 
-Route::get('/menus/productos/{id}', 'MenuController@productos');
+Route::get('/menus/productos/{id}', 'MenuController@productos')->name('menus.productos');
 
 Route::get('/productos/ingredientes/{id}', 'ProductoController@ingredientes');
 
@@ -114,9 +131,11 @@ Route::get('/barras', function () {
     return view('barraSuperior');
 });
 
-Route::get('/mesass', function () {
-    return view('mesass');
+Route::get('/reserva/{id_Mesa}', function () {
+    return view('reservaMesa');
 });
+
+
 
 Route::get('/carrito', function () {
     return view('carrito');

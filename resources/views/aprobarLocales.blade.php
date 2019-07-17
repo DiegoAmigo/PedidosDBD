@@ -8,7 +8,7 @@
         <div class="row">
             <div class="sidebar-box ftco-animate">
                 <div class="categories">
-                    <h3>Hoteles disponibles</h3>
+                    <h3>Locales</h3>
                     @foreach ($locales as $local)
                         <li><a href="{{route('locales.show', $local)}}">{{$local->nombre_local}}
                         @if ($local->aprobado == 1)

@@ -3,8 +3,10 @@
 <?php
     use App\Local;
     use App\Menu;
+    use App\Categoria;
     $locales = Local::all();
     $menus = Menu::all();
+    $categorias = Categoria::all();
 ?>
 @section('seccion')
     
@@ -60,7 +62,13 @@
           <div class="col-md-12 tabulation-search">
             <div class="element-animate">
               <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link p-3 active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"> Ubicación</a>
+                <a class="nav-link p-3 active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Ubicación</a>
+
+                <a class="nav-link p-3" id="v-pills-nombre-tab" data-toggle="pill" href="#v-pills-nombre" role="tab" aria-controls="v-pills-nombre" aria-selected="false">Nombre</a>
+
+                <a class="nav-link p-3" id="v-pills-categoria-tab" data-toggle="pill" href="#v-pills-categoria" role="tab" aria-controls="v-pills-categoria" aria-selected="false">Categoría</a>
+
+                <a class="nav-link p-3" id="v-pills-valoracion-tab" data-toggle="pill" href="#v-pills-valoracion" role="tab" aria-controls="v-pills-valoracion" aria-selected="false">Valoración</a>
               </div>
             </div>
 
@@ -68,12 +76,12 @@
               <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <div class="block-17">
                   
-                  <form method="POST"  action="{{ route('elegirhorariomesa') }}" class="d-block d-lg-flex">
+                  <form method="POST"  action="{{ route('locales/localesEnZona') }}" class="d-block d-lg-flex">
                     @method('POST')
                     @csrf
                     <div class="fields d-block d-lg-flex">
 
-                      <input type="int" id="id_local" name="id_local">
+                      
                       <div class="select-wrap one-third">
                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                         <select name="pais" id="pais" class="form-control">
@@ -92,7 +100,83 @@
                 </div>
               </div>
               
-              
+              <div class="tab-pane fade" id="v-pills-nombre" role="tabpanel" aria-labelledby="v-pills-nombre-tab">
+                <div class="block-17">
+                  
+                  <form method="POST"  action="{{ route('locales/localesNombre') }}" class="d-block d-lg-flex">
+                    @method('POST')
+                    @csrf
+                    <div class="fields d-block d-lg-flex">
+
+                      
+                      <div class="check-in one-third"><input type="text" id="nombre" name= "nombre" class="form-control"></div>
+                    </div>
+                    
+
+                    
+                    <button type="submit" style="background-color: white ; color: black " class="btn btn-primary " onclick="obtenerUbicacion()">Buscar locales</button>
+                  </form>
+                </div>
+              </div>
+
+
+              <div class="tab-pane fade" id="v-pills-categoria" role="tabpanel" aria-labelledby="v-pills-categoria-tab">
+                <div class="block-17">
+                  
+                  <form method="POST"  action="{{ route('locales/categoria') }}" class="d-block d-lg-flex">
+                    @method('POST')
+                    @csrf
+                    <div class="fields d-block d-lg-flex">
+
+                      
+                      <div class="select-wrap one-third">
+                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                        <select name="pais" id="pais" class="form-control">
+                            @foreach((array)(last($categorias)) as $categoria)
+                                <option style="color: black" id="{{($categoria)->id}}" value="{{($categoria)->id}}">{{($categoria)->nombre}}</option>
+                            @endforeach
+                          
+                        </select>
+                      </div>
+                    </div>
+                    
+
+                    
+                    <button type="submit" style="background-color: white ; color: black " class="btn btn-primary " onclick="obtenerUbicacion()">Buscar locales</button>
+                  </form>
+                </div>
+              </div>
+
+
+              <div class="tab-pane fade" id="v-pills-valoracion" role="tabpanel" aria-labelledby="v-pills-valoracion-tab">
+                <div class="block-17">
+                  <label style="color: white">Cantidad de estrellas</label>
+                  <form method="POST"  action="{{ route('locales/valoracion') }}" class="d-block d-lg-flex">
+                    @method('POST')
+                    @csrf
+                    <div class="fields d-block d-lg-flex">
+
+                      
+                      <div class="select-wrap one-third">
+                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                        <select name="pais" id="pais" class="form-control">
+                            <option style="color: black" value="">1</option>
+                            <option style="color: black" value="">2</option>
+                            <option style="color: black" value="">3</option>
+                            <option style="color: black" value="">5</option>
+                          
+                        </select>
+                      </div>
+                    </div>
+                    
+
+                    
+                    <button type="submit" style="background-color: white ; color: black " class="btn btn-primary " onclick="obtenerUbicacion()">Buscar locales</button>
+                  </form>
+                </div>
+              </div>
+
+
               
               
             </div>

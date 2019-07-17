@@ -176,4 +176,49 @@ class LocalController extends Controller
         return view('locales',['localess' => $locales]);
         
     }
+
+
+    public function localesNombre(Request $request)
+    {
+        $locales = [];
+        $localesActual = Local::all();
+        foreach ($localesActual as $local)
+        {
+            $encontrado = strpos($local->nombre_local, $request->nombre);
+            if ($encontrado !== false)
+            {
+                $locales[] = $local;
+            }
+            
+            
+        }
+        return view('locales',['localess' => $locales]);
+        
+    }
+
+
+
+
+    public function localesPorCategoria(Request $request)
+    {
+        $locales = [];
+        $localesActual = Local_Categoria::where('id_categoria', $request->id_categoria)->get();
+        foreach ($localesActual as $local)
+        {
+            $locales[] = Local::where('id', $local->id_local)->get();;
+            
+        }
+        return view('locales',['localess' => $locales]);
+        
+    }
+
+
+
+    public function localesPorValoracion(Request $request)
+    {
+        $locales = Local::where('id', $request->pais)->get();
+        
+        return view('locales',['localess' => $locales]);
+        
+    }
 }

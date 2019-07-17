@@ -1,5 +1,8 @@
 @extends('plantilla')
-
+<?php
+    use App\Menu_Producto;
+    use App\Producto;
+?>
 @section('seccion')
 <!---VER como hacer que se muestra solo para el que adminsitre el local--->
 <form method="POST" action="{{route ('locales.store')}}">
@@ -45,13 +48,13 @@
         <div class="container-fluid">
           <div class="row no-gutters justify-content-center mb-5 pb-5 ftco-animate">
             <div class="col-md-7 text-center heading-section">
-              <h2>Most Popular Destination</h2>
+              <h2> Locales </h2>
             </div>
           </div>
           <div class="row no-gutters">
           @foreach ($localess as $local)
           <div class="col-md-6 col-lg-3 ftco-animate">
-                <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+          <a href="{{route('locales.ver', $local)}}" class="block-5" style="background-image: url('images/tour-1.jpg');">
                   <div class="text">
                   <span class="price">valor entrega: ${{$local->valor_entrega}}</span>
                     <h3 class="heading">{{$local->nombre_local}}</h3>
@@ -69,4 +72,5 @@
           </div>
         </div>
 </section>
+
 @endsection

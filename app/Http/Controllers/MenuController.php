@@ -63,12 +63,24 @@ class MenuController extends Controller
     {
         $menu = Menu::find($id);
         if($menu != NULL){
-            return $menu;
+            return view('verMenuLocal', compact('menu'));
         }
         else{
             return "El menú con el id ingresado no existe en nuestro sistema";
         }
     }
+
+    public function showAdminLocal($id)
+    {
+        $menu = Menu::find($id);
+        if($menu != NULL){
+            return view('verMenuAdmin', compact('menu'));
+        }
+        else{
+            return "El menú con el id ingresado no existe en nuestro sistema";
+        }
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -119,13 +131,21 @@ class MenuController extends Controller
         }
     }
 
+    public function agregarProducto($id_menu, $id_producto){
+        $menu_producto = new Menu_Producto;
+        $menu_producto->id_menu = $id_menu;
+        $menu_producto->id_producto = $id_producto;
+        $menu_producto->seleccionable = true;
+        $menu_producto->save();
+        return back()->with('mensaje', 'Producto Agregado');
+    }
 
     public function productos($id)
     {
         $menu_productos = Menu_Producto::where('id_menu', $id)->get();
         $productos = [];
         foreach ($menu_productos as $producto) {
-            $producto_actual = Producto::where('id', $Producto->id_producto)->get();
+            $producto_actual = Producto::where('id', $producto->id_producto)->get();
             array_push($productos, $producto_actual);
 
         }

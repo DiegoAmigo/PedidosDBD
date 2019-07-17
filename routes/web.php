@@ -19,6 +19,8 @@ Route::get('/mesasUsu/{id_usuario}', 'Mesas_UsuarioController@show');
 //postear una mesa nueva
 Route::post('/mesasUsu', 'Mesas_UsuarioController@store');
 
+
+
 //Route::get('pedidos', 'PedidoController@index');
 
 
@@ -114,9 +116,11 @@ Route::get('/barras', function () {
     return view('barraSuperior');
 });
 
-Route::get('/mesass', function () {
-    return view('mesass');
+Route::get('/reserva/{id_Mesa}', function () {
+    return view('reservaMesa');
 });
+
+
 
 Route::get('/carrito', function () {
     return view('carrito');

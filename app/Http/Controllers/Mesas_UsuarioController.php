@@ -16,9 +16,12 @@ class Mesas_UsuarioController extends Controller
      */
     public function index()
     {
-        return Mesa_usuario::all();
+        $mesasusuario = Mesa_Usuario::all();
+        return view('mesasusuarios',['mesasusuarios' => $mesasusuario]);
     }
 
+
+   
     /**
      * Show the form for creating a new resource.
      *

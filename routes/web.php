@@ -23,6 +23,7 @@ Route::get('/mesasUsu/{id_usuario}', 'Mesas_UsuarioController@show');
 Route::post('/mesasUsu', 'Mesas_UsuarioController@store');
 
 
+Route::post('elegirhorariomesa', 'MesaController@mesaEnLocal')->name('elegirhorariomesa');
 
 //Route::get('pedidos', 'PedidoController@index');
 
@@ -34,7 +35,7 @@ Route::get('/pedidos/{id_usuario}', 'PedidoController@pedidosUsuario');
 
 Route::post('/usuarios/reservarMesa', 'UsuarioController@reservaMesa');
 Route::post('/usuarios/realizarPedido', 'UsuarioController@realizarPedido');
-Route::get('/mesasUsu/disponibles/{id_local}', 'Mesas_UsuarioController@mostrarMesasDisponibles');
+Route::post('/mesasUsu/disponibles', 'Mesas_UsuarioController@mostrarMesasDisponibles')->name('mesasUsu/disponibles');
 
 Route::get('/categorias/locales/{id}', 'CategoriaController@locales');
 
@@ -119,6 +120,9 @@ Route::post('/carrito', 'CarritoController@totalCarrito')->name('carrito/total')
 
 Route::post('/carrito/obtenerTodo', 'CarritoController@obtenerTodoCarrito')->name('carrito/obtenerTodo');
 
+
+
+
 Route::get('/', function () {
     return view('inicio');
 });
@@ -131,7 +135,7 @@ Route::get('/barras', function () {
     return view('barraSuperior');
 });
 
-Route::get('/reserva/{id_Mesa}', function () {
+Route::get('/reserva/{id_local}', function () {
     return view('reservaMesa');
 });
 

@@ -68,12 +68,12 @@
               <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <div class="block-17">
                   
-                  <form method="POST"  action="{{ route('locales/localesEnZona') }}" class="d-block d-lg-flex">
+                  <form method="POST"  action="{{ route('elegirhorariomesa') }}" class="d-block d-lg-flex">
                     @method('POST')
                     @csrf
                     <div class="fields d-block d-lg-flex">
 
-                      
+                      <input type="int" id="id_local" name="id_local">
                       <div class="select-wrap one-third">
                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                         <select name="pais" id="pais" class="form-control">

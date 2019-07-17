@@ -119,4 +119,14 @@ class MesaController extends Controller
             return "local no existente";
         }
     }
+
+
+
+ public function mesaEnLocal(Request $request)
+    {
+        $id = $request->id_local;
+        return view('reservaMesa',['id_local' => $id]);
+    }
+
+
 }

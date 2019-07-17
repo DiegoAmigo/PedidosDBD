@@ -1,4 +1,4 @@
-@extends('plantilla')
+@extends('barraSuperior')
 <?php
     use App\Menu_Producto;
     use App\Producto;

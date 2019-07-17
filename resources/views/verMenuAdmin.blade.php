@@ -1,4 +1,4 @@
-@extends('plantilla')
+@extends('barraSuperior')
 <?php
     use App\Menu_Producto;
     use App\Producto;
@@ -36,7 +36,7 @@
               </div>
             </div>
             <div class="col-md-6">
-                <h2 class="h4 mb-4"> Modificar Información <
+                <h2 class="h4 mb-4"> Modificar Información </h2>
                 <form method="POST" action="{{route('menus.update', $menu)}}">
                     @method('PUT')
                     @csrf

@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Pedido;
 use App\Menu_Pedido;
-
+use App\Menu;
+use Auth;
 class PedidoController extends Controller
 {
     /**
@@ -91,13 +92,31 @@ class PedidoController extends Controller
         //
     }
 
-    public function pedidosUsuario($id_usuario){
-        $pedidos = Pedido::all()->where('id_usuario', '=', $id_usuario);
-        return $pedidos;
-    }
+    
 
     public function pedidosMenu(){
         $pedidos = Menu_Pedido::all();
         return $pedidos;
     }
+
+    public function pedidosUsuario($id_usuario){
+        $pedidos = Pedido::all()->where('id_usuario', '=', Auth::user()->id);
+        return view('pedidos',['pedidos' => $pedidos]);
+    }
+
+    public function pedidosUsuario2(Request $request){
+        $pedidos = Pedido::all()->where('id_usuario', '=', Auth::user()->id);
+        return view('pedidos',['pedidos' => $pedidos]);
+    }
+
+
+    public function menuDelPedido(Request $request){
+        $pedidos = Menu_Pedido::where('id_pedido', $request->id_pedido)->get();
+        $menu = [];
+        foreach ($pedidos as $pedido) {
+            $menu[] = Menu::find($pedido->id_menu);
+        }
+        return  view('pedido',['menus' => $menu]);
+    }
+
 }

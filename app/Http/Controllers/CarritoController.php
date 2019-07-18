@@ -37,8 +37,14 @@ class CarritoController extends Controller
      */
     public function quitarCarrito(Request $request)
     {
+        
         Cart::remove($request->id);
+        
+        
+        return header('Location: obtenerTodo');
     }
+
+
 
     public function quitarCarritoG($id)
     {
@@ -55,6 +61,14 @@ class CarritoController extends Controller
     {
         Cart::get($request->id);
     }
+
+    public function obtenerCarritoG($id)
+    {
+        return Cart::search(function($cartItem, $rowId) use($id) {
+            return $cartItem->rowId === $id;
+            });
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -96,8 +110,8 @@ class CarritoController extends Controller
     public function obtenerTodoCarrito()
     {
         $carritoActual = Cart::content();
-        $total = Cart::total();
-         return view('carrito',['menus' => $carritoActual , 'total' => $total]);
+        $total = Cart::subtotal();
+        return view('carrito',['menus' => $carritoActual , 'total' => $total]);
     }
 
 

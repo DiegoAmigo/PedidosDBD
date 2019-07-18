@@ -26,6 +26,54 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="apellido" class="col-md-4 col-form-label text-md-right">{{ __('Apellido') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="apellido" type="text" class="form-control @error('apellido') is-invalid @enderror" name="apellido" value="{{ old('apellido') }}" required autocomplete="apellido" autofocus>
+
+                                @error('apellido')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        @inject('ubicacionController', 'App\Http\Controllers\UbicacionController')
+                                <?php 
+                                    $datos =  $ubicacionController->obtener_ubicaciones();
+                                ?>
+
+                        <div class="form-group row">
+                            <label for="id_ubicacion" class="col-md-4 col-form-label text-md-right">{{ __('pais') }}</label>
+                            <div class="col-md-6">
+                            <select id="id_ubicacion" class="form-control" name = "id_ubicacion">
+                                
+                                <optgroup  label="Seleccione un pais">
+                                    @foreach($datos as $dato)
+                                        <option value="{{$dato->id}}">{{$dato->pais}},{{$dato->ciudad}}</option>
+                                    @endforeach
+                                </optgroup>
+                            </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="calle" class="col-md-4 col-form-label text-md-right">{{ __('Calle') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="calle" type="text" class="form-control @error('calle') is-invalid @enderror" name="calle" value="{{ old('calle') }}" required autocomplete="calle" autofocus>
+
+                                @error('calle')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
@@ -58,6 +106,18 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="id_rol" class="col-md-4 col-form-label text-md-right">{{ __('Tipo de usuario') }}</label>
+                            <div class="col-md-6">
+                            <select id="id_rol" class="form-control" name = "id_rol">
+                                <option value="1">Cliente</option>
+                                <option value="2">Administrador</option>
+                                <option value="3">Administrador local</option>
+                                
+                            </select>
                             </div>
                         </div>
 

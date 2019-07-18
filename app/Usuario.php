@@ -8,7 +8,7 @@ class Usuario extends Model
 {
     protected $table = 'usuarios';
 
-    protected $fillable = ['nombre', 'apellido', 'email', 'contrasena', 'calle'];
+    protected $fillable = ['name', 'apellido', 'email', 'password', 'calle'];
 
     public function pedidos()
     {

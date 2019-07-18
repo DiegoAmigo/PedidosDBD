@@ -26,7 +26,7 @@
           <div class="row no-gutters">
           @foreach ($localess as $local)
           <div class="col-md-6 col-lg-3 ftco-animate">
-            <form method="POST"  action="{{ route('menus/en-local') }}" class="block-5" name="formulario" >
+            <form method="POST"  action="{{ route('locales/visualizar') }}" class="block-5" name="formulario" >
                     @method('POST')
                     @csrf
                     <input id="id_local" name="id_local" value="{{$local->id}}" style="display:none">

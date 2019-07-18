@@ -40,10 +40,33 @@
                             <p class="mb-0"><span>Dirección:</span> {{$local->direccion_local}}</p>
                         </div>
                     </div>
+                    
+                        
+                    
+
                 </div>
+
+                <div class="text-inner align-self-start">
+                    <div class="col mb-3 d-flex" style="background: white;">
+            <form method="POST"  action="{{ route('menus/en-local') }}" >
+                                <input id="id_local" name="id_local" value="{{$local->id}}" style="display:none">
+                                <button type="submit"  class="btn btn-primary " >Visualizar Menus</button>
+                            </form>
+                            </div>
+                            <div class="col mb-3 d-flex" style="background: white;">
+                            <form method="POST"  action="{{ route('elegirhorariomesa') }}" >
+                                <input id="id_local" name="id_local" value="{{$local->id}}" style="display:none">
+                                <button type="submit"  class="btn btn-primary " >Visualizar Mesas</button>
+                            </form>
+                            </div>
             </div>
+
+
+            </div>
+            
         </div>
     </div>
+
 </section>
 
 

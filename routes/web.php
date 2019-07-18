@@ -113,6 +113,7 @@ Route::post('/locales/categoria', 'LocalController@localesPorCategoria')->name('
 
 Route::post('/locales/valoracion', 'LocalController@localesPorValoracion')->name('locales/valoracion');
 
+Route::post('/locales/visualizar', 'LocalController@verLocal')->name('locales/visualizar');
 
 
 Route::post('/menus/menus-local', 'MenuController@menuEnLocal')->name('menus/en-local');

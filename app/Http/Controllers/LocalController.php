@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Local;
+use App\Menu;
+use App\Local_Categoria;
 use App\Historial_usuario;
 
 class LocalController extends Controller
@@ -221,4 +223,20 @@ class LocalController extends Controller
         return view('locales',['localess' => $locales]);
         
     }
+
+    public function verLocal(Request $request)
+    {
+        $local = Local::find($request->id_local);
+        $menu = Menu::where('id_local', $request->id_local)->get();
+        if($local != NULL){
+            return view('infoLocal', ['local' => $local, 'menus' => $menu ]);
+        }
+        else{
+            return "El local con el id ingresado no existe en nuestro sistema";
+        }
+        
+        
+        
+    }
+
 }

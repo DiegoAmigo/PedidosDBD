@@ -63,8 +63,8 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav mr-auto order-2">
             <li class="nav-item"><a href="/inicio" class="nav-link">Inicio</a></li>
-            <li class="nav-item"><form id="logout-form" action="{{ route('locales/localesEnZona') }}" method="POST" >
-                                        @csrf
+            <li class="nav-item"><form id="busqueda" action="{{ route('locales/localesEnZona') }}" method="POST" >
+                                        
                                         <input name="pais" id = "activadorLocal" type="submit"  class="nav-link" value="{{ $ubicacion}}" style="display: none;" ><label for="activadorLocal" class="nav-link"><span>Locales</span></label>
                                     </form></li>
             
@@ -99,6 +99,16 @@
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
+                                    <a class="dropdown-item" href="{{ route('pedidos/usuario') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('pedidos-form').submit();">
+                                        {{ __('Pedidos realizados') }}
+                                    </a>
+
+                                    <form id="pedidos-form" action="{{ route('pedidos/usuario') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>

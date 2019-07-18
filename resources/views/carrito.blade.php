@@ -81,7 +81,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             
-                            <form action="#">
+                            
                                 <div class="table-content table-responsive">
                                     <table>
                                         <thead>
@@ -97,7 +97,9 @@
                                         <tbody>
                                           @foreach ($menus as $menu)
                                             <tr>
-                                                <td class="product-remove"><a href="#"><i class="ion-android-close"></i></a></td>
+                                                <td class="product-remove"><form method="POST"  action="{{ route('carrito/quitar') }}">
+                                                  <input id="id" name="id" value="{{$menu->rowId}}" style="display:none">
+                                                <button style="border: 0 ; background-color: #ffff"><i class="icon-remove_shopping_cart"></button></i></form></td>
                                                 <td class="product-thumbnail">
                                                     <a href="#"><img src="assets/img/cart/1.jpg" alt=""></a>
                                                 </td>
@@ -124,10 +126,28 @@
                                                 <li>Total<span>100.00</span></li>
                                             </ul>
                                             <a href="#">Realizar pago</a>
+                                            
+                                                @guest
+                            
+                                                
+                                                @else
+                                                <form method="POST"  action="{{ route('pedido/pedir') }}" >
+                                                <input id="id_usuario" name="id_usuario" value="{{Auth::user()->id}}" style="display:none">
+
+                                                <input id="fecha" name="fecha" value="<?php echo date('Y-n-j', time());?>" style="display:none">
+
+                                                <input id="total_precio" name="total_precio" value="{{$total}}" style="display:none">
+
+                                                <input id="notas_adicionales" name="notas_adicionales" value="notas_adicionales" style="display:none">
+
+                                            <button type="submit"  class="btn btn-primary " >Realizar reserva</button>
+                                            </form>
+                                                @endguest
+                                                
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            
                         </div>
                     </div>
                 </div>

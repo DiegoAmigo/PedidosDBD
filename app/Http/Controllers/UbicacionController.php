@@ -18,6 +18,11 @@ class UbicacionController extends Controller
         return Ubicacion::all();
     }
 
+    public static function obtener_ubicaciones()
+    {
+        return Ubicacion::all();
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('barraSuperior')
 
-@section('content')
+@section('seccion')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Tablero informativo</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,10 +14,15 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Has iniciado sesión!
                 </div>
             </div>
         </div>
+        <form method="POST"  action="{{ route('pedidos/usuario') }}" >
+                                                
+
+                                            <button type="submit"  class="btn btn-primary " >Visualizar Pedidos</button>
+                                            </form>
     </div>
 </div>
 @endsection

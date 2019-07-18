@@ -121,7 +121,7 @@ Route::post('carrito/agregar', 'CarritoController@agregarCarrito')->name('carrit
 
 Route::post('/carrito', 'CarritoController@actualizarCarrito')->name('carrito/actualizar');
 
-Route::post('/carrito', 'CarritoController@quitarCarrito')->name('carrito/quitar');
+Route::post('/carrito/quitar', 'CarritoController@quitarCarrito')->name('carrito/quitar');
 
 Route::post('/carrito', 'CarritoController@obtenerCarrito')->name('carrito/obtener');
 
@@ -133,12 +133,20 @@ Route::get('/carrito/obtenerTodo', 'CarritoController@obtenerTodoCarrito')->name
 
 Route::get('/carrito/destruir', 'CarritoController@destruirCarritoG')->name('carrito/dest');
 
+Route::get('/carrito/obtener/{id}', 'CarritoController@obtenerCarritoG');
 
 
+Route::post('/pedido/pedir', 'UsuarioController@realizarPedido2')->name('pedido/pedir');
 
+Route::post('/pedidos/usuario', 'PedidoController@pedidosUsuario2')->name('pedidos/usuario');
 
+Route::post('/pedidos/menu', 'PedidoController@menuDelPedido')->name('pedidos/menu');
 
 Route::get('/', function () {
+    return view('inicio');
+});
+
+Route::get('/inicio', function () {
     return view('inicio');
 });
 

@@ -17,10 +17,10 @@ class CreateUsuariosTable extends Migration
             $table->bigIncrements('id');
             $table->integer('id_ubicacion');
             $table->integer('id_rol');
-            $table->string('nombre', 60);
+            $table->string('name', 60);
             $table->string('apellido', 60);
             $table->string('email', 45);
-            $table->char('contrasena', 32);
+            $table->string('password');
             $table->string('calle', 80);
             $table->timestamps();
 

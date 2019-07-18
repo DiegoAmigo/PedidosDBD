@@ -12,6 +12,8 @@ use App\Menu_Pedido;
 use App\Http\Controllers\Mesas_UsuarioController;
 use App\Local;
 use App\Valoracion;
+use Auth;
+use Cart;
 
 class UsuarioController extends Controller
 {
@@ -176,6 +178,35 @@ class UsuarioController extends Controller
         $pos = $pos + 1;
         }
 
+        return "pedido realizado";
+
+
+    }
+
+
+    public function realizarPedido2(Request $request){
+        $controladorPedido = new PedidoController;
+        if (Auth::check()) {
+            $pedido = $controladorPedido->store($request);
+        
+            foreach(Cart::content() as $menu)
+            {
+                $pos = 0;
+                while ( $pos < $menu->qty )
+                {
+                    $menuPedido = new Menu_Pedido;
+                    $menuPedido->id_pedido = $pedido->id;
+                    $menuPedido->id_menu = $menu->id;
+                    $menuPedido->aclaraciones = "";
+                    $menuPedido->save();
+                    $pos = $pos + 1;
+                }
+                
+            }
+        }
+        
+        
+        
         return "pedido realizado";
 
 

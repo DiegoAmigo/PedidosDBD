@@ -37,7 +37,7 @@ class CategoriaController extends Controller
     {
         $categoria = new Categoria;
         $categoria->nombre = $request->nombre;
-        $categoria->save();
+        $categoria->save();        
         return $categoria;
     }
 

@@ -54,7 +54,7 @@ class LocalController extends Controller
         $local->aprobado = false;
         $local->cadena = $request->cadena;
         $local->nombre_local = $request->nombre_local;
-        $local->save();
+        $local->save();        
         return back();
     }
 

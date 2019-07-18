@@ -45,8 +45,9 @@ class MenuController extends Controller
         $local = Local::find($request->get('id_local'));
         if($local!=null){
             $menu->id_local = $request->id_local;
-            $menu->save();
+            $menu->save();            
             return $menu;
+
         }
         else{
             return "El local con el id ingresado no existe en nuestro sistema";

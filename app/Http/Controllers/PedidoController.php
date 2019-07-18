@@ -42,7 +42,7 @@ class PedidoController extends Controller
         $pedido->fecha = $request->fecha;
         $pedido->total_precio = $request->total_precio;
         $pedido->notas_adicionales = $request->notas_adicionales;
-        $pedido->save();
+        $pedido->save();        
         return $pedido;
     }
 

@@ -33,7 +33,7 @@ Route::post('/usuarios/comentar/{id_usuario}', 'UsuarioController@comentarLocal'
 
 Route::get('/pedidos/{id_usuario}', 'PedidoController@pedidosUsuario');
 
-Route::post('/usuarios/reservarMesa', 'UsuarioController@reservaMesa')->name('usuarios/reservarMesa');;
+Route::post('/usuarios/reservarMesa', 'UsuarioController@reservaMesa')->name('usuarios/reservarMesa');
 Route::post('/usuarios/realizarPedido', 'UsuarioController@realizarPedido');
 Route::post('/mesasUsu/disponibles', 'Mesas_UsuarioController@mostrarMesasDisponibles')->name('mesasUsu/disponibles');
 
@@ -51,6 +51,9 @@ Route::get('/adminverlocales', 'LocalController@index3');
 //para el admin cuando quiere aprobar el local
 Route::get('/localess/{id}', 'LocalController@showValidar')->name('locales.validar');
 
+Route::get('/adminverusuarios', 'UsuarioController@index');
+
+Route::get('adminverusuarios/{id}', 'UsuarioController@showAdmin')->name('usuarios.historial');
 
 //SECCION ADMIN LOCAL VISTAS
 //cuando quiere ver su local y modificar datos del local y agregar nuevo menu
@@ -118,7 +121,7 @@ Route::post('/locales/visualizar', 'LocalController@verLocal')->name('locales/vi
 
 Route::post('/menus/menus-local', 'MenuController@menuEnLocal')->name('menus/en-local');
 
-Route::post('carrito/agregar', 'CarritoController@agregarCarrito')->name('carrito/agregar');
+Route::post('/carrito/agregar', 'CarritoController@agregarCarrito')->name('carrito/agregar');
 
 Route::post('/carrito', 'CarritoController@actualizarCarrito')->name('carrito/actualizar');
 

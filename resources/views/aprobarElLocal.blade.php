@@ -1,4 +1,4 @@
-@extends('plantilla')
+@extends('barraSuperior')
  @section('seccion')
 
 

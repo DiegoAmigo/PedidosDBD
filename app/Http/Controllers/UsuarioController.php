@@ -24,7 +24,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        return Usuario::all();
+        $usuarios = Usuario::all();
+        return view('adminVerUsuarios', compact('usuarios'));
     }
 
     /**
@@ -46,12 +47,11 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $usuario = new Usuario;
-        $usuario->nombre = $request->nombre;
+        $usuario->name = $request->name;
         $usuario->apellido = $request->apellido;
         $usuario->email = $request->email;
-        $usuario->contrasena = $request->contrasena;
+        $usuario->password = $request->password;
         $usuario->calle = $request->calle;
-
         $usuario->save();
         return $usuario;
     }
@@ -64,7 +64,14 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        return Usuario::find($id);
+        $usuario = Usuario::find($id);
+        return view('modificarUsuario', compact('usuario'));
+    }
+
+    public function showAdmin($id)
+    {
+        $usuario = Usuario::find($id);
+        return view('adminVerHistorialUsuario', compact('usuario'));
     }
 
     /**
@@ -88,18 +95,19 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
         $usuario = Usuario::find($id);
-        $usuario->nombre = $request->nombre;
+        $usuario->name = $request->name;
         $usuario->apellido = $request->apellido;
         $usuario->email = $request->email;
-        $usuario->contrasena = $request->contrasena;
+        $usuario->password = $request->password;
         $usuario->calle = $request->calle;
         $usuario->save();
         $historial = New Historial_usuario;
+        $historial->id_usuario= $usuario->id;
         $historial->accion = "Ha actualizado datos del usuario con id".$usuario->id;
         $historial->fecha = date('Y-m-d');
         $historial->hora = date('H:m:s');
         $historial->save();
-        return $usuario;
+        return back();
     }
 
     /**
@@ -168,7 +176,7 @@ class UsuarioController extends Controller
         $cantidadMenu = count($request->menus);
         $pos = 0;
         while ( pos < $cantidadMenu ) {
-            
+
             $requestPedido = new Request(array('id_pedido' =>$pedido->id,'id_menu' =>($request->menus)[pos]->id,'aclaraciones' =>($request->menus)[pos]->aclaraciones));
              $menuPedido = new Menu_Pedido;
         $menuPedido->id_pedido = $pedido->id;
@@ -188,7 +196,7 @@ class UsuarioController extends Controller
         $controladorPedido = new PedidoController;
         if (Auth::check()) {
             $pedido = $controladorPedido->store($request);
-        
+
             foreach(Cart::content() as $menu)
             {
                 $pos = 0;
@@ -201,12 +209,12 @@ class UsuarioController extends Controller
                     $menuPedido->save();
                     $pos = $pos + 1;
                 }
-                
+
             }
         }
-        
-        
-        
+
+
+
         return "pedido realizado";
 
 

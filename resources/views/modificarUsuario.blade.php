@@ -1,85 +1,76 @@
 @extends('barraSuperior')
 
 @section('seccion')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Modificar información personal') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"  autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" >
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" >
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Actualizar') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+<section class="ftco-section contact-section">
+    <div class="container">
+      <div class="row block-9 mb-4">
+        <div class="col-md-6 pr-md-5 flex-column">
+          <div class="row d-block flex-row">
+          <h2 class="h4 mb-4">Datos del Usuario</h2>
+            <div class="col mb-3 d-flex py-4 border" style="background: white;">
+              <div class="align-self-center">
+                    <p class="mb-0"><span>Nombre:</span> {{$usuario->name}}</p>
+              </div>
             </div>
+            <div class="col mb-3 d-flex py-4 border" style="background: white;">
+              <div class="align-self-center">
+                    <p class="mb-0"><span>Apellido:</span> {{$usuario->apellido}}</p>
+              </div>
+            </div>
+            <div class="col mb-3 d-flex py-4 border" style="background: white;">
+              <div class="align-self-center">
+                    <p class="mb-0"><span>Email:</span> {{$usuario->email}}</p>
+              </div>
+            </div>
+            <div class="col mb-3 d-flex py-4 border" style="background: white;">
+              <div class="align-self-center">
+                    <p class="mb-0"><span>Dirección:</span> {{$usuario->calle}}</p>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
+        <div class="col-md-6">
+            <h2 class="h4 mb-4"> Modificar Información
+            <form method="POST" action="{{route('usuarios.update', $usuario)}}">
+                @method('PUT')
+                @csrf
+                <div class="form-group">
+                        <input type="text" name="name" class="form-control"  placeholder="Nombre">
+                        <div class="valid-feedback">
+                            Correcto
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      <input type="text" name="apellido" class="form-control @error('apellido') is-invalid @enderror" placeholder="Apellido">
+                      <div class="valid-feedback">
+                            Correcto
+                        </div>
+                    </div>
+                    <div class="form-group">
+                            <input type="text" name="calle" class="form-control @error('calle') is-invalid @enderror" placeholder="Calle">
+                            <div class="valid-feedback">
+                                  Correcto
+                              </div>
+                          </div>
+                    <div class="form-group">
+                      <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email">
+                      <div class="valid-feedback">
+                            Correcto
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Contraseña">
+                        <div class="valid-feedback">
+                                Correcto
+                            </div>
+                      </div>
+                    <div class="form-group">
+                            <input type="submit" value="Actualizar Información" class="btn btn-primary py-3 px-5">
+                    </div>
+          </form>
+        </div>
+      </div>
+  </section>
 @endsection

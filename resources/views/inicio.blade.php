@@ -131,7 +131,7 @@
                       
                       <div class="select-wrap one-third">
                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                        <select name="pais" id="pais" class="form-control">
+                        <select name="id_categoria" id="id_categoria" class="form-control">
                             @foreach((array)(last($categorias)) as $categoria)
                                 <option style="color: black" id="{{($categoria)->id}}" value="{{($categoria)->id}}">{{($categoria)->nombre}}</option>
                             @endforeach

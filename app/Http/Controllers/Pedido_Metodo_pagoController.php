@@ -39,12 +39,16 @@ class Pedido_Metodo_pagoController extends Controller
     public function store(Request $request)
     {
     	
+        $pedido_pago = new Pedido_Metodo_pago;
+        $pedido_pago->id_pedido = $request->id_pedido;
+        $pedido_pago->id_metodo_pago = $request->id_metodo_pago;
 
-
-
-
+        $pedido_pago->save();
+        return $pedido_pago;
 
     }
+
+    
     /**
      * Display the specified resource.
      *

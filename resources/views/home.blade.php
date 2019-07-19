@@ -18,11 +18,7 @@
                 </div>
             </div>
         </div>
-        <form method="POST"  action="{{ route('pedidos/usuario') }}" >
-                                                
-
-                                            <button type="submit"  class="btn btn-primary " >Visualizar Pedidos</button>
-                                            </form>
+        
     </div>
 </div>
 @endsection

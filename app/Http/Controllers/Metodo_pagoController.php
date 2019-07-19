@@ -37,7 +37,6 @@ class Metodo_pagoController extends Controller
     public function store(Request $request)
     {
         $metodo_pago = new Metodo_pago;
-        $metodo_pago->id_usuario = $request->id_usuario;
         $metodo_pago->pago_entrega = $request->pago_entrega;
         $metodo_pago->pago_tarjeta = $request->pago_tarjeta;
         $metodo_pago->numero_tarjeta = $request->numero_tarjeta;

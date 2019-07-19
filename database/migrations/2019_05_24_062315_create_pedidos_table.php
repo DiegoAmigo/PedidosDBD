@@ -20,7 +20,8 @@ class CreatePedidosTable extends Migration
             $table->double('total_precio', 9, 2);
             $table->text('notas_adicionales');
             $table->timestamps();
-
+            $table->integer('despacho');
+            
             $table->foreign('id_usuario')
                     ->references('id')
                     ->on('usuarios')

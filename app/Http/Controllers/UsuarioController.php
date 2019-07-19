@@ -16,6 +16,8 @@ use Auth;
 use Cart;
 use App\Mail\ConfirmacionReserva;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Pedido_Metodo_pagoController;
+use App\Http\Controllers\Metodo_pagoController;
 
 
 class UsuarioController extends Controller
@@ -216,6 +218,25 @@ class UsuarioController extends Controller
                 }
 
             }
+            if ($request->pago_entrega == 1) {
+                $request->pago_entrega = True;
+            }
+            else
+            {
+                $request->pago_entrega = False;
+            }
+            if ($request->pago_tarjeta == 1) {
+                $request->pago_tarjeta = True;
+            }
+            else
+            {
+                $request->pago_tarjeta = False;
+            }
+            $controladorMetodo = new Metodo_pagoController;
+            $metodo = $controladorMetodo->store($request);
+            $req = new Request(array('id_pedido' =>$pedido->id , 'id_metodo_pago' => $metodo->id ));
+            $controladorMetodoPedido = new Pedido_Metodo_pagoController;
+            $mpP = $controladorMetodoPedido->store($req);
         }
         
         //Necesito obtener el correo del usuario que hizo el carrito, y necesito obtener los elementos de carrito de

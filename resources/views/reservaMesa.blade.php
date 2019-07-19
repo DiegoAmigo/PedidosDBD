@@ -33,6 +33,7 @@
                 <!-- Campo de entrada de hora -->
                 Selecciona la hora de la reserva:
                 <input type="time" name="hora" min="12:00" max="23:00:00" step="1" class="form-control">
+                
 
                 <button type="submit" style="background-color: white ; color: black " class="btn btn-primary " >Ver mesas disponibles</button>
                   </form>

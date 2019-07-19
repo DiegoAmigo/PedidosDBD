@@ -137,7 +137,7 @@ class Mesas_UsuarioController extends Controller
 
         }
         
-        return view('mesass',['mesass'=> $mesasDisponibles]);
+        return view('mesass',['mesass'=> $mesasDisponibles, 'dia' => $request->dia, 'hora' => $request->hora   ]);
     }
 }
 

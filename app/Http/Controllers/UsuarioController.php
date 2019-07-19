@@ -14,6 +14,9 @@ use App\Local;
 use App\Valoracion;
 use Auth;
 use Cart;
+use App\Mail\ConfirmacionReserva;
+use Illuminate\Support\Facades\Mail;
+
 
 class UsuarioController extends Controller
 {
@@ -51,8 +54,7 @@ class UsuarioController extends Controller
         $usuario->email = $request->email;
         $usuario->contrasena = $request->contrasena;
         $usuario->calle = $request->calle;
-
-        $usuario->save();
+        $usuario->save();                     
         return $usuario;
     }
 
@@ -65,6 +67,7 @@ class UsuarioController extends Controller
     public function show($id)
     {
         return Usuario::find($id);
+        
     }
 
     /**
@@ -151,6 +154,8 @@ class UsuarioController extends Controller
             }
             if($reservable == true){
                 $controlador = new Mesas_UsuarioController;
+                Mail::to('christian.chamblat@gmail.com')->send(new ConfirmacionReserva($request));
+                
                 return $controlador->store($request);
             }
             else{
@@ -177,7 +182,7 @@ class UsuarioController extends Controller
         $menuPedido->save();
         $pos = $pos + 1;
         }
-
+        
         return "pedido realizado";
 
 
@@ -206,7 +211,7 @@ class UsuarioController extends Controller
         }
         
         
-        
+        Mail::to('christian.chamblat@gmail.com')->send(new ConfirmacionPedido($menuPedido));
         return "pedido realizado";
 
 

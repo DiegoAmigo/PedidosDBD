@@ -215,7 +215,7 @@
                 @if ($loop->index <4)
                     @if ($loop->index == 0)
                     <div class="col-lg-3 promo ftco-animate">
-                            <a href="{{ route('locales.show', $local) }}" class="promo-img mb-4" style="background-image: url(images/promo-1.jpg);"></a>
+                            <a href="{{ route('locales.show', $local) }}" class="promo-img mb-4" style="background-image: url(imagenes/226d196c32051c7374445decd76c2952.jpg);"></a>
                             <div class="text text-center">
                                     <h2>{{$local->nombre_local}}</h2>
                                     <h3 class="price"><span>Precio Entrega</span> {{$local->valor_entrega}}</h3>
@@ -225,7 +225,7 @@
                     @endif
                     @if ($loop->index == 1)
                     <div class="col-lg-3 promo ftco-animate">
-                            <a href="{{ route('locales.show', $local) }}" class="promo-img mb-4" style="background-image: url(images/promo-1.jpg);"></a>
+                            <a href="{{ route('locales.show', $local) }}" class="promo-img mb-4" style="background-image: url(imagenes/226d196c32051c7374445decd76c2952.jpg);"></a>
                             <div class="text text-center">
                                     <h2>{{$local->nombre_local}}</h2>
                                     <h3 class="price"><span>Precio Entrega</span> {{$local->valor_entrega}}</h3>
@@ -235,7 +235,7 @@
                     @endif
                     @if ($loop->index == 2)
                     <div class="col-lg-3 promo ftco-animate">
-                            <a href="{{ route('locales.show', $local) }}" class="promo-img mb-4" style="background-image: url(images/promo-1.jpg);"></a>
+                            <a href="{{ route('locales.show', $local) }}" class="promo-img mb-4" style="background-image: url(imagenes/226d196c32051c7374445decd76c2952.jpg);"></a>
                             <div class="text text-center">
                                     <h2>{{$local->nombre_local}}</h2>
                                     <h3 class="price"><span>Precio Entrega</span> {{$local->valor_entrega}}</h3>
@@ -245,7 +245,7 @@
                     @endif
                     @if ($loop->index == 3)
                     <div class="col-lg-3 promo ftco-animate">
-                            <a href="{{ route('locales.show', $local) }}" class="promo-img mb-4" style="background-image: url(images/promo-1.jpg);"></a>
+                            <a href="{{ route('locales.show', $local) }}" class="promo-img mb-4" style="background-image: url(imagenes/226d196c32051c7374445decd76c2952.jpg);"></a>
                             <div class="text text-center">
                                     <h2>{{$local->nombre_local}}</h2>
                                     <h3 class="price"><span>Precio Entrega</span> {{$local->valor_entrega}}</h3>
@@ -274,7 +274,7 @@
                   @if ($loop->index <8)
                       @if ($loop->index==0)
                       <div class="col-md-6 col-lg-3 ftco-animate">
-                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                            <a href="#" class="block-5" style="background-image: url('imagenes/indice.jpg');">
                               <div class="text">
                                 <span class="price">Precio: {{$menu->precio}}</span>
                                 <h3 class="heading">{{$menu->nombre}}</h3>
@@ -288,7 +288,7 @@
                       @endif
                       @if ($loop->index==1)
                       <div class="col-md-6 col-lg-3 ftco-animate">
-                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                            <a href="#" class="block-5" style="background-image: url('imagenes/indice.jpg');">
                               <div class="text">
                                 <span class="price">Precio: {{$menu->precio}}</span>
                                 <h3 class="heading">{{$menu->nombre}}</h3>
@@ -302,7 +302,7 @@
                       @endif
                       @if ($loop->index==2)
                       <div class="col-md-6 col-lg-3 ftco-animate">
-                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                            <a href="#" class="block-5" style="background-image: url('imagenes/indice.jpg');">
                               <div class="text">
                                 <span class="price">Precio: {{$menu->precio}}</span>
                                 <h3 class="heading">{{$menu->nombre}}</h3>
@@ -316,7 +316,7 @@
                       @endif
                       @if ($loop->index==3)
                       <div class="col-md-6 col-lg-3 ftco-animate">
-                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                            <a href="#" class="block-5" style="background-image: url('imagenes/indice.jpg');">
                               <div class="text">
                                 <span class="price">Precio: {{$menu->precio}}</span>
                                 <h3 class="heading">{{$menu->nombre}}</h3>
@@ -330,7 +330,7 @@
                       @endif
                       @if ($loop->index==4)
                       <div class="col-md-6 col-lg-3 ftco-animate">
-                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                            <a href="#" class="block-5" style="background-image: url('imagenes/indice.jpg');">
                               <div class="text">
                                 <span class="price">Precio: {{$menu->precio}}</span>
                                 <h3 class="heading">{{$menu->nombre}}</h3>
@@ -344,7 +344,7 @@
                       @endif
                       @if ($loop->index==5)
                       <div class="col-md-6 col-lg-3 ftco-animate">
-                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                            <a href="#" class="block-5" style="background-image: url('imagenes/indice.jpg');">
                               <div class="text">
                                 <span class="price">Precio: {{$menu->precio}}</span>
                                 <h3 class="heading">{{$menu->nombre}}</h3>
@@ -358,7 +358,7 @@
                       @endif
                       @if ($loop->index==6)
                       <div class="col-md-6 col-lg-3 ftco-animate">
-                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                            <a href="#" class="block-5" style="background-image: url('imagenes/indice.jpg');">
                               <div class="text">
                                 <span class="price">Precio: {{$menu->precio}}</span>
                                 <h3 class="heading">{{$menu->nombre}}</h3>
@@ -372,7 +372,7 @@
                       @endif
                       @if ($loop->index==7)
                       <div class="col-md-6 col-lg-3 ftco-animate">
-                            <a href="#" class="block-5" style="background-image: url('images/tour-1.jpg');">
+                            <a href="#" class="block-5" style="background-image: url('imagenes/indice.jpg');">
                               <div class="text">
                                 <span class="price">Precio: {{$menu->precio}}</span>
                                 <h3 class="heading">{{$menu->nombre}}</h3>

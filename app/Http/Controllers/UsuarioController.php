@@ -166,8 +166,8 @@ class UsuarioController extends Controller
             if($reservable == true){
                 $controlador = new Mesas_UsuarioController;
                 Mail::to(Auth::user()->email)->send(new ConfirmacionReserva($request));
-                
-                return $controlador->store($request);
+                $controlador->store($request);
+                return redirect('/');
             }
             else{
                 return "no se puede reservar";
@@ -204,7 +204,7 @@ class UsuarioController extends Controller
         $controladorPedido = new PedidoController;
         if (Auth::check()) {
             $pedido = $controladorPedido->store($request);
-
+            $carritoLista = [];
             foreach(Cart::content() as $menu)
             {
                 $pos = 0;
@@ -217,7 +217,7 @@ class UsuarioController extends Controller
                     $menuPedido->save();
                     $pos = $pos + 1;
                 }
-
+                array_push($carritoLista, $menu);
             }
             if ($request->pago_entrega == 1) {
                 $request->pago_entrega = True;
@@ -241,8 +241,8 @@ class UsuarioController extends Controller
         }
         
         //Necesito obtener el correo del usuario que hizo el carrito, y necesito obtener los elementos de carrito de
-        Mail::to(Auth::user()->email)->send(new ConfirmacionPedido());
-        return "pedido realizado";
+        Mail::to(Auth::user()->email)->send(new ConfirmacionPedido($carritoLista));
+        return redirect('/');
 
 
     }

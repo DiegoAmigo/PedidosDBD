@@ -219,11 +219,11 @@
                   
                   <form method="POST"  action="{{ route('pedido/pedir') }}" class="d-block d-lg-flex">
                     @method('POST')
-                    @csrf
-                    <div class="fields d-block d-lg-flex">
-
-                      <input id="id_usuario" name="id_usuario" value="{{Auth::user()->id}}" style="display:none">
-
+                    @csrf                  
+                    <div class="fields d-block d-lg-flex">   
+                                      
+                    <input id="id_usuario" name="id_usuario" value="{{Auth::user()->id}}" style="display:none">                                         
+                      
                     <input id="fecha" name="fecha" value="<?php echo date('Y-n-j', time());?>" style="display:none">
 
                     <input id="total_precio" name="total_precio" value="{{$total}}" style="display:none">

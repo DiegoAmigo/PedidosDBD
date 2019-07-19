@@ -1,5 +1,9 @@
 <!doctype html>
 <html lang="es">
+  <?php
+  use App\Usuario;
+  $usuario = Usuario::find(Auth::user()->id);
+  ?>
 <body>
     <p>
       Sr/a {{Auth::user()->name}}
@@ -8,7 +12,7 @@
       <strong> A continuación se muestran los detalles de su pedido: </strong>
     </p>
     <p>
-      <strong> #Orden de pedido: </strong>
+      <strong> #Orden de pedido:</strong>
     </p>
     
     <table>
@@ -18,15 +22,18 @@
     <th>Cantidad</th>
     <th>Total</th>
   </tr>
-  <tr>
-    <td>blabla</td>
-    <td>blabla</td>
-    <td>blabla</td>
-    <td>zdsgsdg</td>
-  </tr>
+  @foreach ($requestCarritoCompra as $item)
+    <tr>
+    <td>{{$item->model->nombre}}</td>
+    <td>{{$item->model->precio}}</td>
+    <td>{{$item->model->cantidad}}}</td>
+    <td>{{$item->total}}</td>
+  </tr> 
+  @endforeach
+  
 </table> 
 <p> 
-  Monto total:   
+  Monto total: {{Cart::total()}}
 </p>
 <p>
   Método de pago: 

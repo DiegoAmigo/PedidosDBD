@@ -163,7 +163,13 @@ Route::get('/reserva/{id_local}', function () {
     return view('reservaMesa');
 });
 
+Route::get('/resultado', function () {
+    return view('resultadoSatisfactorio');
+});
 
+Route::get('/reservass', function () {
+    return view('listaReserva');
+});
 
 Route::get('/carrito', function () {
     return view('carrito');

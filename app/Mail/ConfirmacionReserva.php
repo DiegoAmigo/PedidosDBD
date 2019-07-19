@@ -6,20 +6,17 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Http\Request;
 
-class ConfirmacionPedido extends Mailable
+class ConfirmacionReserva extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public pedido;
-    
+    public $requestData;
 
-        
-    public function __construct(Pedido $pedido)
+    public function __construct(Request $request)
     {
-        $this->pedido = $pedido;
-        
-
+        $this->requestData=$request;
     }
 
     /**
@@ -29,6 +26,6 @@ class ConfirmacionPedido extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.confirmacionCompra');
+        return $this->view('mails.confirmacionReserva');
     }
 }

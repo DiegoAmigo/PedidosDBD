@@ -29,7 +29,7 @@
                     @csrf
                 <input  name="id_local" value= "{{$id_local}}" style="display:none">
                 <!-- Campo de entrada de fecha -->
-                Selecciona la fecha de la reserva:<input type="date" name="fecha" min="2019-07-17"max="2019-08-01" step="2" class="form-control">
+                Selecciona la fecha de la reserva:<input type="date" name="dia" min="2019-07-17"max="2019-08-01" step="2" class="form-control">
                 <!-- Campo de entrada de hora -->
                 Selecciona la hora de la reserva:
                 <input type="time" name="hora" min="12:00" max="23:00:00" step="1" class="form-control">

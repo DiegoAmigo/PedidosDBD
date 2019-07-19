@@ -26,15 +26,16 @@
 
 
               <div class="col-md-6 col-lg-6 mb-4 ftco-animate">
-                <a href="#" class="block-5" style="background-image: url('{{ asset('imagenes/mesas-restaurante.jpg')}}');">
+                <a href="#" class="block-5" style="background-image: url('{{ asset('imagenes/mesas-restaurante.jpg')}}');" onclick="event.preventDefault();
+                                                     document.getElementById('{{$mesa->id}}').submit();">
                   
-                  <form method="POST" action="{{route('usuarios/reservarMesa')}}">
+                  <form id="{{$mesa->id}}" method="POST" action="{{route('usuarios/reservarMesa')}}">
                     <input id="id_pedido" name="id_mesa" value="{{$mesa->id}}" style="display:none">
                     <input id="id_usuario" name="id_usuario" value="{{Auth::user()->id}}" style="display:none">
-                    <input id="dia{{$mesa->id}}" name="dia" value="{{$mesa->dia}}" style="display:none">
-                    <input id="hora{{$mesa->id}}" name="hora" value="{{$mesa->hora}}" style="display:none">
+                    <input id="dia{{$mesa->id}}" name="dia" value="{{$dia}}" style="display:none">
+                    <input id="hora{{$mesa->id}}" name="hora" value="{{$hora}}" style="display:none">
                   
-                  <button type="submit" style="background-color: white ; color: black " class="btn btn-primary " >Reservar</button><br/>
+                  <button type="submit" style="background-color: white ; color: black " class="btn btn-primary " >Reservar</button>
                   </form>
                   <div class="text">
 

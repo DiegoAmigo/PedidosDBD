@@ -33,7 +33,7 @@ Route::post('/usuarios/comentar/{id_usuario}', 'UsuarioController@comentarLocal'
 
 Route::get('/pedidos/{id_usuario}', 'PedidoController@pedidosUsuario');
 
-Route::post('/usuarios/reservarMesa', 'UsuarioController@reservaMesa');
+Route::post('/usuarios/reservarMesa', 'UsuarioController@reservaMesa')->name('usuarios/reservarMesa');;
 Route::post('/usuarios/realizarPedido', 'UsuarioController@realizarPedido');
 Route::post('/mesasUsu/disponibles', 'Mesas_UsuarioController@mostrarMesasDisponibles')->name('mesasUsu/disponibles');
 

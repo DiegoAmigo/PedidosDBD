@@ -110,8 +110,30 @@ class CarritoController extends Controller
     public function obtenerTodoCarrito()
     {
         $carritoActual = Cart::content();
-        $total = Cart::subtotal();
-        return view('carrito',['menus' => $carritoActual , 'total' => $total]);
+        $total = Cart::total();
+        $locales = [];
+        $localess = [];
+        $envioTotal = 0;
+        foreach ($carritoActual as $menuActual) {
+            if(in_array($menuActual->model->id_local,$locales))
+            {
+
+            }
+            else
+            {
+                $locales[] = $menuActual->model->id_local;
+            }
+        }
+
+        foreach ($locales as $local) {
+            $localess[] = Local::find($local);
+        }
+
+        foreach ($localess as $local) {
+            $envioTotal = $envioTotal + $local->valor_entrega;
+        }
+
+        return view('carrito',['menus' => $carritoActual , 'total' => $total, 'envioTotal' => $envioTotal ]);
     }
 
 

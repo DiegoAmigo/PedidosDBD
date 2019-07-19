@@ -43,6 +43,7 @@ class PedidoController extends Controller
         $pedido->fecha = $request->fecha;
         $pedido->total_precio = $request->total_precio;
         $pedido->notas_adicionales = $request->notas_adicionales;
+        $pedido->despacho = $request->despacho;
         $pedido->save();        
         return $pedido;
     }
@@ -116,7 +117,7 @@ class PedidoController extends Controller
         foreach ($pedidos as $pedido) {
             $menu[] = Menu::find($pedido->id_menu);
         }
-        return  view('pedido',['menus' => $menu]);
+        return view('pedido',['menus' => $menu]);
     }
 
 }

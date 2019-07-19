@@ -12,5 +12,6 @@ $factory->define(Pedido::class, function (Faker $faker) {
         'fecha'=>$faker->dateTimeBetween($startDate= 'now', $endDate= '+10 weeks', $timezone = NULL),
         'total_precio'=>$faker->randomFloat($nbMaxDecimals = 2, $min=0, $max=9999999),
         'notas_adicionales'=>$faker->text($maxNbChars= 200),
+        'despacho'=>$faker->numberBetween($min = 0, $max = 1)
     ];
 });

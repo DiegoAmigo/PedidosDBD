@@ -207,8 +207,7 @@ class LocalController extends Controller
         $localesActual = Local_Categoria::where('id_categoria', $request->id_categoria)->get();
         foreach ($localesActual as $local)
         {
-            $locales[] = Local::where('id', $local->id_local)->get();;
-            
+            $locales[] = Local::find($local->id_local);
         }
         return view('locales',['localess' => $locales]);
         

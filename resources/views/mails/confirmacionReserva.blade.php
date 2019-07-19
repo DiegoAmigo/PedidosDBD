@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-    <title>Confirmación de compra </title>
+    <title>Reserva</title>
 </head>
 <body>
-    <p>Tu pedido </p>
-    <p>.............................</p>    
+<p> Aquí está el detalle de su reserva {{  }}</p>
+    <p>Mesa</p>
+    <ul>
+    <li> Dia :  {{ $reserva->dia}} </li>
+    <li> Hora : {{$reserva->hora}} </li>    
 </body>
 </html>

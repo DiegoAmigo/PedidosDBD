@@ -139,6 +139,13 @@ class Mesas_UsuarioController extends Controller
         
         return view('mesass',['mesass'=> $mesasDisponibles, 'dia' => $request->dia, 'hora' => $request->hora   ]);
     }
+
+
+
+    public function reservasUsuario(Request $request){
+        $mesa_usuario = Mesa_Usuario::all()->where('id_usuario', '=', Auth::user()->id);
+        return view('listaReserva',['listaReserva' => $mesa_usuario]);
+    }
 }
 
 

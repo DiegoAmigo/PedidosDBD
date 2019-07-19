@@ -218,8 +218,8 @@ class UsuarioController extends Controller
             }
         }
         
-        
-        Mail::to('christian.chamblat@gmail.com')->send(new ConfirmacionPedido($menuPedido));
+        //Necesito obtener el correo del usuario que hizo el carrito, y necesito obtener los elementos de carrito de
+        //Mail::to('christian.chamblat@gmail.com')->send(new ConfirmacionPedido($menuPedido,$usuario));
         return "pedido realizado";
 
 

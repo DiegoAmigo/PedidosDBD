@@ -6,18 +6,21 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Http\Request;
 
 class ConfirmacionPedido extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public pedido;
+    public $requestCarritoCompra;
+    public $requestUsuario;
     
 
         
-    public function __construct(Pedido $pedido)
+    public function __construct(Request $requestCarritoCompra, Request $requestUsuario)
     {
-        $this->pedido = $pedido;
+        $this->requestCarritoCompra = $requestCarritoCompra;
+        $this->requestUsuario = $requestUsuario;
         
 
     }

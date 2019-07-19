@@ -1,3 +1,4 @@
+<!-- Boquejo entrega comprobante de reserva
 <!doctype html>
 <html lang="es">
 <head>
@@ -6,10 +7,16 @@
     <title>Reserva</title>
 </head>
 <body>
-<p> Aquí está el detalle de su reserva {{  }}</p>
+<p> Aquí está el detalle de su reserva {{$usuario->}}</p>
     <p>Mesa</p>
     <ul>
     <li> Dia :  {{ $reserva->dia}} </li>
     <li> Hora : {{$reserva->hora}} </li>    
+     Aquí va el nombre del restaurante 
+     Aqui va la direccion
+
 </body>
 </html>
+
+-->
+

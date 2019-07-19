@@ -15,6 +15,7 @@ use App\Valoracion;
 use Auth;
 use Cart;
 use App\Mail\ConfirmacionReserva;
+use App\Mail\ConfirmacionPedido;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Pedido_Metodo_pagoController;
 use App\Http\Controllers\Metodo_pagoController;
@@ -164,7 +165,7 @@ class UsuarioController extends Controller
             }
             if($reservable == true){
                 $controlador = new Mesas_UsuarioController;
-                Mail::to('christian.chamblat@gmail.com')->send(new ConfirmacionReserva($request));
+                Mail::to(Auth::user()->email)->send(new ConfirmacionReserva($request));
                 
                 return $controlador->store($request);
             }
@@ -240,7 +241,7 @@ class UsuarioController extends Controller
         }
         
         //Necesito obtener el correo del usuario que hizo el carrito, y necesito obtener los elementos de carrito de
-        //Mail::to('christian.chamblat@gmail.com')->send(new ConfirmacionPedido($menuPedido,$usuario));
+        Mail::to(Auth::user()->email)->send(new ConfirmacionPedido());
         return "pedido realizado";
 
 

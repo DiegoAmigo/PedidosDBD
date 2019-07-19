@@ -12,15 +12,15 @@ class ConfirmacionPedido extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $requestCarritoCompra;
-    public $requestUsuario;
+    //public $requestCarritoCompra;
+    //public $requestUsuario;
     
 
         
-    public function __construct(Request $requestCarritoCompra, Request $requestUsuario)
+    public function __construct()
     {
-        $this->requestCarritoCompra = $requestCarritoCompra;
-        $this->requestUsuario = $requestUsuario;
+        //$this->requestCarritoCompra = $requestCarritoCompra;
+        //$this->requestUsuario = $requestUsuario;
         
 
     }

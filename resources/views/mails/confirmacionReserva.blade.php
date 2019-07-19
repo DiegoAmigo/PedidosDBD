@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-    <title>Reserva</title>
-</head>
-<body>
-<p> Aquí está el detalle de su reserva</p>
-    <p>Mesa</p>
-    <ul>
-    <li> Dia :  {{ $requestData->dia}} </li>
-    <li> Hora : {{$requestData->hora}} </li>    
+<body>    
+    <p> Sr/a {{Auth::user()->name}}</p>
+    <p> A continuación se muestran los detalles de su reserva: </p>
+    <p>
+        <strong> Aquí está el detalle de su reserva </strong> 
+    </p>
+
+    <strong> #Orden de reserva: </strong>     
+    <p> Nombre del restaurante: </p>
+    <p> Dirección: </p>   
+    <p> Mesa:  </p>    
+    <p> Dia :  {{ $requestData->dia}} </p>
+    <p> Hora : {{$requestData->hora}} </p>   
 </body>
 </html>
 

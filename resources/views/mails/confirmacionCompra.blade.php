@@ -1,26 +1,37 @@
-<!-- Boquejo comprobante de compra
-<!DOCTYPE html>
-<html>
-    <head>
-        <title> Comprobante de pedido </title>
-        <title> Detalles del pedido </title>
-    </head>
-    <body>  
-        <tbody>
-                            @foreach ($requestCarrito as $menu)
-                            <tr>
-                                <td class="align-middle">{{ $menu->nombre}}</td>
-                                <td class="align-middle">{{ $menu->precio}}</td>
-                                <td class="align-middle">{{ $menu->descuento}}</td>
-                                <td class="align-middle">{{ $menu->descripcion}}</td>
-                            </tr> 
-                            @endforeach
-                        </tbody>    
-          
-        
-    </body>
+<!doctype html>
+<html lang="es">
+<body>
+    <p>
+      Sr/a {{Auth::user()->name}}
+    </p>    
+    <p>
+      <strong> A continuación se muestran los detalles de su pedido: </strong>
+    </p>
+    <p>
+      <strong> #Orden de pedido: </strong>
+    </p>
+    
+    <table>
+  <tr>
+    <th>Menu</th>
+    <th>Precio</th>
+    <th>Cantidad</th>
+    <th>Total</th>
+  </tr>
+  <tr>
+    <td>blabla</td>
+    <td>blabla</td>
+    <td>blabla</td>
+    <td>zdsgsdg</td>
+  </tr>
+</table> 
+<p> 
+  Monto total:   
+</p>
+<p>
+  Método de pago: 
+</p>
+</body>
 </html>
-
--->
 
 
